@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KKMKK-TMS", "KKMKK-TMS\KKMKK-TMS.vbproj", "{E2292998-B76E-4D2C-B336-A08BEC73BA6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2292998-B76E-4D2C-B336-A08BEC73BA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2292998-B76E-4D2C-B336-A08BEC73BA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2292998-B76E-4D2C-B336-A08BEC73BA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2292998-B76E-4D2C-B336-A08BEC73BA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0027E479-E224-48C3-B840-E0C2FBE57A7C}
+	EndGlobalSection
+EndGlobal
