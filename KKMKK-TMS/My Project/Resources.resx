@@ -118,8 +118,56 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="fluent--home-12-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fluent--home-12-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fluent--add-32-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--add-32-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--add-32-filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--add-32-filled2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--arrow-clockwise-32-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-clockwise-32-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--arrow-clockwise-32-filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-clockwise-32-filled2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--arrow-up-32-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-up-32-filled (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--arrow-up-32-filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-up-32-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--delete-32-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--delete-32-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--delete-32-filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--delete-32-filled2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--home-24-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--home-24-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--table-arrow-up-24-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--table-arrow-up-24-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent--table-arrow-up-24-filled (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--table-arrow-up-24-filled (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__arrow_clockwise_24_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-clockwise-24-filled (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__arrow_clockwise_24_filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-clockwise-24-filled (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__arrow_left_12_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-left-12-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__search_24_regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--search-24-regular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__table_delete_row_20_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--table-delete-row-20-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__table_delete_row_20_filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--table-delete-row-20-filled2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kkmkk_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kkmkk_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

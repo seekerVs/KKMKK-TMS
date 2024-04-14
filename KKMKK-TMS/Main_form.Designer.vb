@@ -24,154 +24,86 @@ Partial Class Main_form
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main_form))
         ToolStrip1 = New ToolStrip()
-        ToolStripButton1 = New ToolStripButton()
+        HomeBtn = New ToolStripButton()
         ToolStripSeparator1 = New ToolStripSeparator()
-        ToolStripLabel4 = New ToolStripDropDownButton()
-        PendingToolStripMenuItem = New ToolStripMenuItem()
-        ProcessingToolStripMenuItem = New ToolStripMenuItem()
-        CompletedToolStripMenuItem = New ToolStripMenuItem()
-        DeniedToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripLabel1 = New ToolStripDropDownButton()
-        CreateLoanApplicationToolStripMenuItem = New ToolStripMenuItem()
-        ViewLoansToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripLabel2 = New ToolStripDropDownButton()
-        CreateShareCapitalTransacToolStripMenuItem = New ToolStripMenuItem()
-        ViewShareCapitalToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripLabel3 = New ToolStripDropDownButton()
-        ViewMemberApplicantionToolStripMenuItem = New ToolStripMenuItem()
-        ViewMembersToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripLabel5 = New ToolStripDropDownButton()
-        AllToolStripMenuItem = New ToolStripMenuItem()
+        TransactionBtn = New ToolStripDropDownButton()
+        LoansBtn = New ToolStripDropDownButton()
+        ShareBtn = New ToolStripDropDownButton()
+        MembersBtn = New ToolStripDropDownButton()
+        StaffsBtn = New ToolStripDropDownButton()
+        Main_panel = New Panel()
         ToolStrip1.SuspendLayout()
         SuspendLayout()
         ' 
         ' ToolStrip1
         ' 
-        ToolStrip1.Items.AddRange(New ToolStripItem() {ToolStripButton1, ToolStripSeparator1, ToolStripLabel4, ToolStripLabel1, ToolStripLabel2, ToolStripLabel3, ToolStripLabel5})
+        ToolStrip1.BackColor = SystemColors.ControlLight
+        ToolStrip1.Items.AddRange(New ToolStripItem() {HomeBtn, ToolStripSeparator1, TransactionBtn, LoansBtn, ShareBtn, MembersBtn, StaffsBtn})
         ToolStrip1.Location = New Point(0, 0)
         ToolStrip1.Name = "ToolStrip1"
         ToolStrip1.Size = New Size(868, 25)
         ToolStrip1.TabIndex = 0
         ToolStrip1.Text = "ToolStrip1"
         ' 
-        ' ToolStripButton1
+        ' HomeBtn
         ' 
-        ToolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image
-        ToolStripButton1.Image = My.Resources.Resources.fluent__home_12_filled
-        ToolStripButton1.ImageTransparentColor = Color.Magenta
-        ToolStripButton1.Name = "ToolStripButton1"
-        ToolStripButton1.Size = New Size(23, 22)
-        ToolStripButton1.Text = "ToolStripButton1"
+        HomeBtn.DisplayStyle = ToolStripItemDisplayStyle.Image
+        HomeBtn.Image = My.Resources.Resources.fluent__home_24_filled
+        HomeBtn.ImageTransparentColor = Color.Magenta
+        HomeBtn.Name = "HomeBtn"
+        HomeBtn.Size = New Size(23, 22)
+        HomeBtn.Text = "ToolStripButton1"
         ' 
         ' ToolStripSeparator1
         ' 
         ToolStripSeparator1.Name = "ToolStripSeparator1"
         ToolStripSeparator1.Size = New Size(6, 25)
         ' 
-        ' ToolStripLabel4
+        ' TransactionBtn
         ' 
-        ToolStripLabel4.DropDownItems.AddRange(New ToolStripItem() {AllToolStripMenuItem, PendingToolStripMenuItem, ProcessingToolStripMenuItem, CompletedToolStripMenuItem, DeniedToolStripMenuItem})
-        ToolStripLabel4.Name = "ToolStripLabel4"
-        ToolStripLabel4.ShowDropDownArrow = False
-        ToolStripLabel4.Size = New Size(76, 22)
-        ToolStripLabel4.Text = "Transactions"
+        TransactionBtn.AccessibleDescription = "Here it is"
+        TransactionBtn.AccessibleName = "Staffs"
+        TransactionBtn.Name = "TransactionBtn"
+        TransactionBtn.ShowDropDownArrow = False
+        TransactionBtn.Size = New Size(76, 22)
+        TransactionBtn.Text = "Transactions"
         ' 
-        ' PendingToolStripMenuItem
+        ' LoansBtn
         ' 
-        PendingToolStripMenuItem.Name = "PendingToolStripMenuItem"
-        PendingToolStripMenuItem.Size = New Size(180, 22)
-        PendingToolStripMenuItem.Text = "Pending"
+        LoansBtn.Name = "LoansBtn"
+        LoansBtn.ShowDropDownArrow = False
+        LoansBtn.Size = New Size(42, 22)
+        LoansBtn.Text = "Loans"
         ' 
-        ' ProcessingToolStripMenuItem
+        ' ShareBtn
         ' 
-        ProcessingToolStripMenuItem.Name = "ProcessingToolStripMenuItem"
-        ProcessingToolStripMenuItem.Size = New Size(180, 22)
-        ProcessingToolStripMenuItem.Text = "Processing"
+        ShareBtn.Name = "ShareBtn"
+        ShareBtn.ShowDropDownArrow = False
+        ShareBtn.Size = New Size(80, 22)
+        ShareBtn.Text = "Share Capital"
         ' 
-        ' CompletedToolStripMenuItem
+        ' MembersBtn
         ' 
-        CompletedToolStripMenuItem.Name = "CompletedToolStripMenuItem"
-        CompletedToolStripMenuItem.Size = New Size(180, 22)
-        CompletedToolStripMenuItem.Text = "Completed"
+        MembersBtn.Name = "MembersBtn"
+        MembersBtn.ShowDropDownArrow = False
+        MembersBtn.Size = New Size(61, 22)
+        MembersBtn.Text = "Members"
         ' 
-        ' DeniedToolStripMenuItem
+        ' StaffsBtn
         ' 
-        DeniedToolStripMenuItem.Name = "DeniedToolStripMenuItem"
-        DeniedToolStripMenuItem.Size = New Size(180, 22)
-        DeniedToolStripMenuItem.Text = "Denied"
+        StaffsBtn.Name = "StaffsBtn"
+        StaffsBtn.ShowDropDownArrow = False
+        StaffsBtn.Size = New Size(40, 22)
+        StaffsBtn.Text = "Staffs"
         ' 
-        ' ToolStripLabel1
+        ' Main_panel
         ' 
-        ToolStripLabel1.DropDownItems.AddRange(New ToolStripItem() {CreateLoanApplicationToolStripMenuItem, ViewLoansToolStripMenuItem})
-        ToolStripLabel1.Name = "ToolStripLabel1"
-        ToolStripLabel1.ShowDropDownArrow = False
-        ToolStripLabel1.Size = New Size(42, 22)
-        ToolStripLabel1.Text = "Loans"
-        ' 
-        ' CreateLoanApplicationToolStripMenuItem
-        ' 
-        CreateLoanApplicationToolStripMenuItem.Name = "CreateLoanApplicationToolStripMenuItem"
-        CreateLoanApplicationToolStripMenuItem.Size = New Size(200, 22)
-        CreateLoanApplicationToolStripMenuItem.Text = "Create Loan Transaction"
-        ' 
-        ' ViewLoansToolStripMenuItem
-        ' 
-        ViewLoansToolStripMenuItem.Name = "ViewLoansToolStripMenuItem"
-        ViewLoansToolStripMenuItem.Size = New Size(200, 22)
-        ViewLoansToolStripMenuItem.Text = "View Loans"
-        ' 
-        ' ToolStripLabel2
-        ' 
-        ToolStripLabel2.DropDownItems.AddRange(New ToolStripItem() {CreateShareCapitalTransacToolStripMenuItem, ViewShareCapitalToolStripMenuItem})
-        ToolStripLabel2.Name = "ToolStripLabel2"
-        ToolStripLabel2.ShowDropDownArrow = False
-        ToolStripLabel2.Size = New Size(80, 22)
-        ToolStripLabel2.Text = "Share Capital"
-        ' 
-        ' CreateShareCapitalTransacToolStripMenuItem
-        ' 
-        CreateShareCapitalTransacToolStripMenuItem.Name = "CreateShareCapitalTransacToolStripMenuItem"
-        CreateShareCapitalTransacToolStripMenuItem.Size = New Size(243, 22)
-        CreateShareCapitalTransacToolStripMenuItem.Text = "Create Share Capital Transaction"
-        ' 
-        ' ViewShareCapitalToolStripMenuItem
-        ' 
-        ViewShareCapitalToolStripMenuItem.Name = "ViewShareCapitalToolStripMenuItem"
-        ViewShareCapitalToolStripMenuItem.Size = New Size(243, 22)
-        ViewShareCapitalToolStripMenuItem.Text = "View Share Capital"
-        ' 
-        ' ToolStripLabel3
-        ' 
-        ToolStripLabel3.DropDownItems.AddRange(New ToolStripItem() {ViewMemberApplicantionToolStripMenuItem, ViewMembersToolStripMenuItem})
-        ToolStripLabel3.Name = "ToolStripLabel3"
-        ToolStripLabel3.ShowDropDownArrow = False
-        ToolStripLabel3.Size = New Size(61, 22)
-        ToolStripLabel3.Text = "Members"
-        ' 
-        ' ViewMemberApplicantionToolStripMenuItem
-        ' 
-        ViewMemberApplicantionToolStripMenuItem.Name = "ViewMemberApplicantionToolStripMenuItem"
-        ViewMemberApplicantionToolStripMenuItem.Size = New Size(227, 22)
-        ViewMemberApplicantionToolStripMenuItem.Text = "Create Member Applicantion"
-        ' 
-        ' ViewMembersToolStripMenuItem
-        ' 
-        ViewMembersToolStripMenuItem.Name = "ViewMembersToolStripMenuItem"
-        ViewMembersToolStripMenuItem.Size = New Size(227, 22)
-        ViewMembersToolStripMenuItem.Text = "View Members"
-        ' 
-        ' ToolStripLabel5
-        ' 
-        ToolStripLabel5.Name = "ToolStripLabel5"
-        ToolStripLabel5.ShowDropDownArrow = False
-        ToolStripLabel5.Size = New Size(40, 22)
-        ToolStripLabel5.Text = "Staffs"
-        ' 
-        ' AllToolStripMenuItem
-        ' 
-        AllToolStripMenuItem.Name = "AllToolStripMenuItem"
-        AllToolStripMenuItem.Size = New Size(180, 22)
-        AllToolStripMenuItem.Text = "All"
+        Main_panel.BackColor = SystemColors.Control
+        Main_panel.Dock = DockStyle.Fill
+        Main_panel.Location = New Point(0, 25)
+        Main_panel.Name = "Main_panel"
+        Main_panel.Size = New Size(868, 432)
+        Main_panel.TabIndex = 1
         ' 
         ' Main_form
         ' 
@@ -179,8 +111,10 @@ Partial Class Main_form
         AutoScaleMode = AutoScaleMode.Font
         AutoSize = True
         ClientSize = New Size(868, 457)
+        Controls.Add(Main_panel)
         Controls.Add(ToolStrip1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MinimumSize = New Size(868, 432)
         Name = "Main_form"
         Text = "KKMKK-TMS"
         WindowState = FormWindowState.Maximized
@@ -191,23 +125,13 @@ Partial Class Main_form
     End Sub
 
     Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents ToolStripLabel1 As ToolStripDropDownButton
-    Friend WithEvents CreateLoanApplicationToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewLoansToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LoansBtn As ToolStripDropDownButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents ToolStripLabel2 As ToolStripDropDownButton
-    Friend WithEvents CreateShareCapitalTransacToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewShareCapitalToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripLabel3 As ToolStripDropDownButton
-    Friend WithEvents ViewMemberApplicantionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewMembersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripLabel4 As ToolStripDropDownButton
-    Friend WithEvents PendingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProcessingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CompletedToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DeniedToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripLabel5 As ToolStripDropDownButton
-    Friend WithEvents AllToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ShareBtn As ToolStripDropDownButton
+    Friend WithEvents MembersBtn As ToolStripDropDownButton
+    Friend WithEvents TransactionBtn As ToolStripDropDownButton
+    Friend WithEvents StaffsBtn As ToolStripDropDownButton
+    Friend WithEvents Main_panel As Panel
+    Friend WithEvents HomeBtn As ToolStripButton
 
 End Class
