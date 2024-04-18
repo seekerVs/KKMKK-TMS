@@ -5,8 +5,7 @@ Imports Mysqlx
 
 Module Module1
 
-    Public tax_rate As Double = 0.25
-    Public myadocon, conn As New MySqlConnection
+    Public conn As New MySqlConnection
     Public cmd As New MySqlCommand
     Public cmdread As MySqlDataReader
     Public db_server = "'localhost'" ' server name

@@ -25,9 +25,11 @@ Partial Class Loans_form
         components = New ComponentModel.Container()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         FlowLayoutPanel1 = New FlowLayoutPanel()
         refreshBtn = New Button()
         Label2 = New Label()
@@ -36,9 +38,12 @@ Partial Class Loans_form
         deleteBtn = New Button()
         BulkUpdateBtn = New Button()
         BulkDeleteBtn = New Button()
+        ExportBtn = New Button()
         ToolTip1 = New ToolTip(components)
         Side_panel = New FlowLayoutPanel()
         SideInnerPanel1 = New Panel()
+        StatusCbbox = New ComboBox()
+        status_lbl = New Label()
         FlowLayoutPanel2 = New FlowLayoutPanel()
         DBInsertBtn = New Button()
         DBUpdateBtn = New Button()
@@ -50,19 +55,27 @@ Partial Class Loans_form
         LoanIdText = New TextBox()
         Label4 = New Label()
         SideBackBtn = New Button()
-        Label1 = New Label()
+        sideheader_lbl = New Label()
         SideInnerPanel2 = New Panel()
-        Button1 = New Button()
+        SideBackBtn2 = New Button()
         Label3 = New Label()
         Search_panel = New Panel()
-        search_pic = New PictureBox()
-        amount_txt = New TextBox()
-        amount_lbl = New Label()
-        type_lbl = New Label()
-        type_cbbox = New ComboBox()
+        asda = New FlowLayoutPanel()
         id_lbl = New Label()
         id_txt = New TextBox()
+        type_lbl = New Label()
+        type_cbbox = New ComboBox()
+        amount_lbl = New Label()
+        amount_txt = New TextBox()
+        date_lbl = New Label()
+        date_cbbox = New ComboBox()
+        time_lbl = New Label()
+        time_dtp = New DateTimePicker()
+        Statuslbl = New Label()
+        status_cbbox = New ComboBox()
+        search_pic = New PictureBox()
         Main_panel = New Panel()
+        SelectAllBtn = New Button()
         select_lbl = New Label()
         LoanDg = New DataGridView()
         col_loanid = New DataGridViewTextBoxColumn()
@@ -77,6 +90,7 @@ Partial Class Loans_form
         FlowLayoutPanel2.SuspendLayout()
         SideInnerPanel2.SuspendLayout()
         Search_panel.SuspendLayout()
+        asda.SuspendLayout()
         CType(search_pic, ComponentModel.ISupportInitialize).BeginInit()
         Main_panel.SuspendLayout()
         CType(LoanDg, ComponentModel.ISupportInitialize).BeginInit()
@@ -93,11 +107,12 @@ Partial Class Loans_form
         FlowLayoutPanel1.Controls.Add(deleteBtn)
         FlowLayoutPanel1.Controls.Add(BulkUpdateBtn)
         FlowLayoutPanel1.Controls.Add(BulkDeleteBtn)
+        FlowLayoutPanel1.Controls.Add(ExportBtn)
         FlowLayoutPanel1.Dock = DockStyle.Top
         FlowLayoutPanel1.Location = New Point(0, 0)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         FlowLayoutPanel1.Padding = New Padding(20, 10, 20, 10)
-        FlowLayoutPanel1.Size = New Size(1143, 68)
+        FlowLayoutPanel1.Size = New Size(1465, 68)
         FlowLayoutPanel1.TabIndex = 1
         ' 
         ' refreshBtn
@@ -187,25 +202,39 @@ Partial Class Loans_form
         BulkDeleteBtn.TabIndex = 6
         BulkDeleteBtn.UseVisualStyleBackColor = False
         ' 
+        ' ExportBtn
+        ' 
+        ExportBtn.BackColor = SystemColors.ButtonFace
+        ExportBtn.Enabled = False
+        ExportBtn.Image = My.Resources.Resources.fluent__arrow_export_ltr_32_filled
+        ExportBtn.Location = New Point(401, 10)
+        ExportBtn.Margin = New Padding(10, 0, 0, 0)
+        ExportBtn.Name = "ExportBtn"
+        ExportBtn.Size = New Size(48, 48)
+        ExportBtn.TabIndex = 7
+        ExportBtn.UseVisualStyleBackColor = False
+        ' 
         ' Side_panel
         ' 
         Side_panel.AutoScroll = True
         Side_panel.AutoScrollMargin = New Size(20, 0)
         Side_panel.AutoSizeMode = AutoSizeMode.GrowAndShrink
-        Side_panel.BackColor = Color.Salmon
+        Side_panel.BackColor = SystemColors.ControlDark
         Side_panel.Controls.Add(SideInnerPanel1)
         Side_panel.Controls.Add(SideInnerPanel2)
         Side_panel.Dock = DockStyle.Left
         Side_panel.Location = New Point(0, 68)
         Side_panel.Margin = New Padding(0)
         Side_panel.Name = "Side_panel"
-        Side_panel.Size = New Size(294, 519)
+        Side_panel.Size = New Size(294, 634)
         Side_panel.TabIndex = 2
         ' 
         ' SideInnerPanel1
         ' 
         SideInnerPanel1.AutoScroll = True
         SideInnerPanel1.BackColor = SystemColors.ControlDark
+        SideInnerPanel1.Controls.Add(StatusCbbox)
+        SideInnerPanel1.Controls.Add(status_lbl)
         SideInnerPanel1.Controls.Add(FlowLayoutPanel2)
         SideInnerPanel1.Controls.Add(label199)
         SideInnerPanel1.Controls.Add(AmountText)
@@ -215,12 +244,33 @@ Partial Class Loans_form
         SideInnerPanel1.Controls.Add(LoanIdText)
         SideInnerPanel1.Controls.Add(Label4)
         SideInnerPanel1.Controls.Add(SideBackBtn)
-        SideInnerPanel1.Controls.Add(Label1)
+        SideInnerPanel1.Controls.Add(sideheader_lbl)
         SideInnerPanel1.Location = New Point(0, 0)
         SideInnerPanel1.Margin = New Padding(0)
         SideInnerPanel1.Name = "SideInnerPanel1"
         SideInnerPanel1.Size = New Size(294, 434)
         SideInnerPanel1.TabIndex = 0
+        ' 
+        ' StatusCbbox
+        ' 
+        StatusCbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        StatusCbbox.Items.AddRange(New Object() {"", "Pending", "Processing", "Approved", "Denied"})
+        StatusCbbox.Location = New Point(20, 283)
+        StatusCbbox.Name = "StatusCbbox"
+        StatusCbbox.Size = New Size(155, 23)
+        StatusCbbox.TabIndex = 6
+        StatusCbbox.Visible = False
+        ' 
+        ' status_lbl
+        ' 
+        status_lbl.AutoSize = True
+        status_lbl.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        status_lbl.Location = New Point(20, 259)
+        status_lbl.Name = "status_lbl"
+        status_lbl.Size = New Size(52, 21)
+        status_lbl.TabIndex = 11
+        status_lbl.Text = "Status"
+        status_lbl.Visible = False
         ' 
         ' FlowLayoutPanel2
         ' 
@@ -228,7 +278,7 @@ Partial Class Loans_form
         FlowLayoutPanel2.Controls.Add(DBInsertBtn)
         FlowLayoutPanel2.Controls.Add(DBUpdateBtn)
         FlowLayoutPanel2.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel2.Location = New Point(99, 312)
+        FlowLayoutPanel2.Location = New Point(158, 328)
         FlowLayoutPanel2.Name = "FlowLayoutPanel2"
         FlowLayoutPanel2.Size = New Size(94, 32)
         FlowLayoutPanel2.TabIndex = 9
@@ -266,7 +316,7 @@ Partial Class Loans_form
         ' 
         label199.AutoSize = True
         label199.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        label199.Location = New Point(21, 202)
+        label199.Location = New Point(21, 197)
         label199.Name = "label199"
         label199.Size = New Size(66, 21)
         label199.TabIndex = 8
@@ -274,7 +324,7 @@ Partial Class Loans_form
         ' 
         ' AmountText
         ' 
-        AmountText.Location = New Point(21, 226)
+        AmountText.Location = New Point(21, 221)
         AmountText.MaxLength = 10
         AmountText.Name = "AmountText"
         AmountText.Size = New Size(138, 23)
@@ -283,17 +333,17 @@ Partial Class Loans_form
         ' TransacTypeCbbox
         ' 
         TransacTypeCbbox.DropDownStyle = ComboBoxStyle.DropDownList
-        TransacTypeCbbox.Items.AddRange(New Object() {"Payment", "Loan Application", "Early Payment", "Disbursement", "Late Fee", "Ineterest Payment"})
-        TransacTypeCbbox.Location = New Point(20, 158)
+        TransacTypeCbbox.Items.AddRange(New Object() {"", "Payment", "Loan Application", "Early Payment", "Disbursement", "Late Fee", "Ineterest Payment"})
+        TransacTypeCbbox.Location = New Point(20, 155)
         TransacTypeCbbox.Name = "TransacTypeCbbox"
-        TransacTypeCbbox.Size = New Size(180, 23)
+        TransacTypeCbbox.Size = New Size(155, 23)
         TransacTypeCbbox.TabIndex = 6
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(20, 134)
+        Label5.Location = New Point(20, 131)
         Label5.Name = "Label5"
         Label5.Size = New Size(125, 21)
         Label5.TabIndex = 5
@@ -343,20 +393,20 @@ Partial Class Loans_form
         SideBackBtn.TabIndex = 1
         SideBackBtn.UseVisualStyleBackColor = False
         ' 
-        ' Label1
+        ' sideheader_lbl
         ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(20, 13)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(184, 21)
-        Label1.TabIndex = 0
-        Label1.Text = "Create Loan Transaction"
+        sideheader_lbl.AutoSize = True
+        sideheader_lbl.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        sideheader_lbl.Location = New Point(20, 13)
+        sideheader_lbl.Name = "sideheader_lbl"
+        sideheader_lbl.Size = New Size(184, 21)
+        sideheader_lbl.TabIndex = 0
+        sideheader_lbl.Text = "Create Loan Transaction"
         ' 
         ' SideInnerPanel2
         ' 
         SideInnerPanel2.BackColor = SystemColors.ControlDark
-        SideInnerPanel2.Controls.Add(Button1)
+        SideInnerPanel2.Controls.Add(SideBackBtn2)
         SideInnerPanel2.Controls.Add(Label3)
         SideInnerPanel2.Location = New Point(0, 434)
         SideInnerPanel2.Margin = New Padding(0)
@@ -364,18 +414,18 @@ Partial Class Loans_form
         SideInnerPanel2.Size = New Size(294, 434)
         SideInnerPanel2.TabIndex = 1
         ' 
-        ' Button1
+        ' SideBackBtn2
         ' 
-        Button1.BackColor = SystemColors.ControlDark
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Image = My.Resources.Resources.fluent__arrow_left_12_filled
-        Button1.Location = New Point(256, 14)
-        Button1.Margin = New Padding(0)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(23, 24)
-        Button1.TabIndex = 1
-        Button1.UseVisualStyleBackColor = False
+        SideBackBtn2.BackColor = SystemColors.ControlDark
+        SideBackBtn2.FlatAppearance.BorderSize = 0
+        SideBackBtn2.FlatStyle = FlatStyle.Flat
+        SideBackBtn2.Image = My.Resources.Resources.fluent__arrow_left_12_filled
+        SideBackBtn2.Location = New Point(256, 14)
+        SideBackBtn2.Margin = New Padding(0)
+        SideBackBtn2.Name = "SideBackBtn2"
+        SideBackBtn2.Size = New Size(23, 24)
+        SideBackBtn2.TabIndex = 1
+        SideBackBtn2.UseVisualStyleBackColor = False
         ' 
         ' Label3
         ' 
@@ -389,104 +439,203 @@ Partial Class Loans_form
         ' 
         ' Search_panel
         ' 
+        Search_panel.Controls.Add(asda)
         Search_panel.Controls.Add(search_pic)
-        Search_panel.Controls.Add(amount_txt)
-        Search_panel.Controls.Add(amount_lbl)
-        Search_panel.Controls.Add(type_lbl)
-        Search_panel.Controls.Add(type_cbbox)
-        Search_panel.Controls.Add(id_lbl)
-        Search_panel.Controls.Add(id_txt)
         Search_panel.Dock = DockStyle.Top
         Search_panel.Location = New Point(294, 68)
         Search_panel.Name = "Search_panel"
-        Search_panel.Size = New Size(849, 52)
-        Search_panel.TabIndex = 4
+        Search_panel.Size = New Size(1171, 52)
+        Search_panel.TabIndex = 8
+        ' 
+        ' asda
+        ' 
+        asda.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        asda.AutoScroll = True
+        asda.Controls.Add(id_lbl)
+        asda.Controls.Add(id_txt)
+        asda.Controls.Add(type_lbl)
+        asda.Controls.Add(type_cbbox)
+        asda.Controls.Add(amount_lbl)
+        asda.Controls.Add(amount_txt)
+        asda.Controls.Add(date_lbl)
+        asda.Controls.Add(date_cbbox)
+        asda.Controls.Add(time_lbl)
+        asda.Controls.Add(time_dtp)
+        asda.Controls.Add(Statuslbl)
+        asda.Controls.Add(status_cbbox)
+        asda.Location = New Point(0, 0)
+        asda.Margin = New Padding(0)
+        asda.Name = "asda"
+        asda.Padding = New Padding(20, 10, 10, 10)
+        asda.Size = New Size(1127, 52)
+        asda.TabIndex = 24
+        asda.WrapContents = False
+        ' 
+        ' id_lbl
+        ' 
+        id_lbl.AutoSize = True
+        id_lbl.Font = New Font("Segoe UI", 9.75F)
+        id_lbl.Location = New Point(23, 16)
+        id_lbl.Margin = New Padding(3, 6, 3, 3)
+        id_lbl.Name = "id_lbl"
+        id_lbl.Size = New Size(52, 17)
+        id_lbl.TabIndex = 17
+        id_lbl.Text = "Loan ID"
+        ' 
+        ' id_txt
+        ' 
+        id_txt.Location = New Point(81, 13)
+        id_txt.Margin = New Padding(3, 3, 20, 3)
+        id_txt.MaxLength = 7
+        id_txt.Name = "id_txt"
+        id_txt.Size = New Size(59, 23)
+        id_txt.TabIndex = 16
+        id_txt.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' type_lbl
+        ' 
+        type_lbl.AutoSize = True
+        type_lbl.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        type_lbl.Location = New Point(163, 16)
+        type_lbl.Margin = New Padding(3, 6, 3, 3)
+        type_lbl.Name = "type_lbl"
+        type_lbl.Size = New Size(105, 17)
+        type_lbl.TabIndex = 19
+        type_lbl.Text = "Transaction Type"
+        ' 
+        ' type_cbbox
+        ' 
+        type_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        type_cbbox.Items.AddRange(New Object() {"", "Payment", "Loan Application", "Early Payment", "Disbursement", "Late Fee", "Interest Payment"})
+        type_cbbox.Location = New Point(274, 13)
+        type_cbbox.Margin = New Padding(3, 3, 20, 3)
+        type_cbbox.Name = "type_cbbox"
+        type_cbbox.Size = New Size(132, 23)
+        type_cbbox.TabIndex = 18
+        ' 
+        ' amount_lbl
+        ' 
+        amount_lbl.AutoSize = True
+        amount_lbl.Font = New Font("Segoe UI", 9.75F)
+        amount_lbl.Location = New Point(429, 16)
+        amount_lbl.Margin = New Padding(3, 6, 3, 3)
+        amount_lbl.Name = "amount_lbl"
+        amount_lbl.Size = New Size(53, 17)
+        amount_lbl.TabIndex = 20
+        amount_lbl.Text = "Amount"
+        ' 
+        ' amount_txt
+        ' 
+        amount_txt.Location = New Point(488, 13)
+        amount_txt.Margin = New Padding(3, 3, 20, 3)
+        amount_txt.MaxLength = 10
+        amount_txt.Name = "amount_txt"
+        amount_txt.Size = New Size(77, 23)
+        amount_txt.TabIndex = 21
+        amount_txt.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' date_lbl
+        ' 
+        date_lbl.AutoSize = True
+        date_lbl.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        date_lbl.Location = New Point(588, 16)
+        date_lbl.Margin = New Padding(3, 6, 3, 3)
+        date_lbl.Name = "date_lbl"
+        date_lbl.Size = New Size(35, 17)
+        date_lbl.TabIndex = 26
+        date_lbl.Text = "Date"
+        ' 
+        ' date_cbbox
+        ' 
+        date_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        date_cbbox.FormattingEnabled = True
+        date_cbbox.Location = New Point(629, 13)
+        date_cbbox.Margin = New Padding(3, 3, 20, 3)
+        date_cbbox.Name = "date_cbbox"
+        date_cbbox.Size = New Size(121, 23)
+        date_cbbox.TabIndex = 29
+        ' 
+        ' time_lbl
+        ' 
+        time_lbl.AutoSize = True
+        time_lbl.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        time_lbl.Location = New Point(773, 16)
+        time_lbl.Margin = New Padding(3, 6, 3, 3)
+        time_lbl.Name = "time_lbl"
+        time_lbl.Size = New Size(36, 17)
+        time_lbl.TabIndex = 28
+        time_lbl.Text = "Time"
+        ' 
+        ' time_dtp
+        ' 
+        time_dtp.CustomFormat = "hh:mm:ss"
+        time_dtp.Format = DateTimePickerFormat.Custom
+        time_dtp.Location = New Point(815, 13)
+        time_dtp.Margin = New Padding(3, 3, 20, 3)
+        time_dtp.Name = "time_dtp"
+        time_dtp.ShowUpDown = True
+        time_dtp.Size = New Size(82, 23)
+        time_dtp.TabIndex = 30
+        ' 
+        ' Statuslbl
+        ' 
+        Statuslbl.AutoSize = True
+        Statuslbl.Font = New Font("Segoe UI", 9.75F)
+        Statuslbl.Location = New Point(920, 16)
+        Statuslbl.Margin = New Padding(3, 6, 3, 3)
+        Statuslbl.Name = "Statuslbl"
+        Statuslbl.Size = New Size(43, 17)
+        Statuslbl.TabIndex = 22
+        Statuslbl.Text = "Status"
+        ' 
+        ' status_cbbox
+        ' 
+        status_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        status_cbbox.FormattingEnabled = True
+        status_cbbox.Items.AddRange(New Object() {"", "Pending", "Processing", "Approved", "Denied"})
+        status_cbbox.Location = New Point(969, 13)
+        status_cbbox.Margin = New Padding(3, 3, 20, 3)
+        status_cbbox.Name = "status_cbbox"
+        status_cbbox.Size = New Size(114, 23)
+        status_cbbox.TabIndex = 24
         ' 
         ' search_pic
         ' 
         search_pic.Anchor = AnchorStyles.Right
         search_pic.Image = My.Resources.Resources.fluent__search_24_regular
-        search_pic.Location = New Point(803, 12)
+        search_pic.Location = New Point(1130, 14)
         search_pic.Name = "search_pic"
         search_pic.Size = New Size(24, 24)
         search_pic.SizeMode = PictureBoxSizeMode.AutoSize
-        search_pic.TabIndex = 15
+        search_pic.TabIndex = 23
         search_pic.TabStop = False
-        ' 
-        ' amount_txt
-        ' 
-        amount_txt.Anchor = AnchorStyles.Left
-        amount_txt.Location = New Point(625, 15)
-        amount_txt.MaxLength = 10
-        amount_txt.Name = "amount_txt"
-        amount_txt.Size = New Size(138, 23)
-        amount_txt.TabIndex = 14
-        ' 
-        ' amount_lbl
-        ' 
-        amount_lbl.Anchor = AnchorStyles.Left
-        amount_lbl.AutoSize = True
-        amount_lbl.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        amount_lbl.Location = New Point(553, 16)
-        amount_lbl.Name = "amount_lbl"
-        amount_lbl.Size = New Size(66, 21)
-        amount_lbl.TabIndex = 13
-        amount_lbl.Text = "Amount"
-        ' 
-        ' type_lbl
-        ' 
-        type_lbl.Anchor = AnchorStyles.Left
-        type_lbl.AutoSize = True
-        type_lbl.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        type_lbl.Location = New Point(217, 16)
-        type_lbl.Name = "type_lbl"
-        type_lbl.Size = New Size(119, 20)
-        type_lbl.TabIndex = 12
-        type_lbl.Text = "Transaction Type"
-        ' 
-        ' type_cbbox
-        ' 
-        type_cbbox.Anchor = AnchorStyles.Left
-        type_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
-        type_cbbox.Items.AddRange(New Object() {"Payment", "Loan Application", "Early Payment", "Disbursement", "Late Fee", "Ineterest Payment"})
-        type_cbbox.Location = New Point(342, 15)
-        type_cbbox.Name = "type_cbbox"
-        type_cbbox.Size = New Size(180, 23)
-        type_cbbox.TabIndex = 11
-        ' 
-        ' id_lbl
-        ' 
-        id_lbl.Anchor = AnchorStyles.Left
-        id_lbl.AutoSize = True
-        id_lbl.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        id_lbl.Location = New Point(24, 16)
-        id_lbl.Name = "id_lbl"
-        id_lbl.Size = New Size(60, 20)
-        id_lbl.TabIndex = 10
-        id_lbl.Text = "Loan ID"
-        ' 
-        ' id_txt
-        ' 
-        id_txt.Anchor = AnchorStyles.Left
-        id_txt.Location = New Point(84, 15)
-        id_txt.Name = "id_txt"
-        id_txt.Size = New Size(105, 23)
-        id_txt.TabIndex = 9
         ' 
         ' Main_panel
         ' 
+        Main_panel.Controls.Add(SelectAllBtn)
         Main_panel.Controls.Add(select_lbl)
         Main_panel.Controls.Add(LoanDg)
         Main_panel.Dock = DockStyle.Fill
         Main_panel.Location = New Point(294, 120)
         Main_panel.Name = "Main_panel"
-        Main_panel.Size = New Size(849, 467)
-        Main_panel.TabIndex = 5
+        Main_panel.Size = New Size(1171, 582)
+        Main_panel.TabIndex = 9
+        ' 
+        ' SelectAllBtn
+        ' 
+        SelectAllBtn.FlatAppearance.BorderSize = 0
+        SelectAllBtn.FlatStyle = FlatStyle.Flat
+        SelectAllBtn.Image = My.Resources.Resources.fluent__select_all_off_20_filled
+        SelectAllBtn.Location = New Point(22, 0)
+        SelectAllBtn.Name = "SelectAllBtn"
+        SelectAllBtn.Size = New Size(24, 24)
+        SelectAllBtn.TabIndex = 2
+        SelectAllBtn.UseVisualStyleBackColor = True
         ' 
         ' select_lbl
         ' 
         select_lbl.AutoSize = True
-        select_lbl.Location = New Point(21, 3)
+        select_lbl.Location = New Point(49, 5)
         select_lbl.Name = "select_lbl"
         select_lbl.Size = New Size(89, 15)
         select_lbl.TabIndex = 1
@@ -507,7 +656,7 @@ Partial Class Loans_form
         LoanDg.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         LoanDg.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         LoanDg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Control
         DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
@@ -517,26 +666,26 @@ Partial Class Loans_form
         LoanDg.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         LoanDg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         LoanDg.Columns.AddRange(New DataGridViewColumn() {col_loanid, col_transactype, col_amount, col_date, col_time, col_status})
-        LoanDg.Location = New Point(21, 27)
+        LoanDg.Location = New Point(22, 30)
         LoanDg.Name = "LoanDg"
         LoanDg.ReadOnly = True
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = SystemColors.ButtonShadow
-        DataGridViewCellStyle4.Font = New Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
-        DataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        LoanDg.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = SystemColors.ButtonShadow
+        DataGridViewCellStyle6.Font = New Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
+        DataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        LoanDg.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         LoanDg.RowHeadersVisible = False
-        DataGridViewCellStyle5.BackColor = SystemColors.ControlLightLight
-        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
-        DataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText
-        LoanDg.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle7.BackColor = SystemColors.ControlLightLight
+        DataGridViewCellStyle7.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle7.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
+        DataGridViewCellStyle7.SelectionForeColor = SystemColors.ControlText
+        LoanDg.RowsDefaultCellStyle = DataGridViewCellStyle7
         LoanDg.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        LoanDg.Size = New Size(806, 417)
+        LoanDg.Size = New Size(1124, 531)
         LoanDg.TabIndex = 0
         ' 
         ' col_loanid
@@ -555,12 +704,19 @@ Partial Class Loans_form
         ' 
         ' col_amount
         ' 
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        col_amount.DefaultCellStyle = DataGridViewCellStyle4
         col_amount.HeaderText = "Amount"
+        col_amount.MaxInputLength = 20
         col_amount.Name = "col_amount"
         col_amount.ReadOnly = True
         ' 
         ' col_date
         ' 
+        DataGridViewCellStyle5.Format = "yyyy-MM-dd"
+        DataGridViewCellStyle5.NullValue = Nothing
+        col_date.DefaultCellStyle = DataGridViewCellStyle5
         col_date.HeaderText = "Date"
         col_date.Name = "col_date"
         col_date.ReadOnly = True
@@ -581,7 +737,7 @@ Partial Class Loans_form
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1143, 587)
+        ClientSize = New Size(1465, 702)
         Controls.Add(Main_panel)
         Controls.Add(Search_panel)
         Controls.Add(Side_panel)
@@ -598,6 +754,8 @@ Partial Class Loans_form
         SideInnerPanel2.PerformLayout()
         Search_panel.ResumeLayout(False)
         Search_panel.PerformLayout()
+        asda.ResumeLayout(False)
+        asda.PerformLayout()
         CType(search_pic, ComponentModel.ISupportInitialize).EndInit()
         Main_panel.ResumeLayout(False)
         Main_panel.PerformLayout()
@@ -615,13 +773,11 @@ Partial Class Loans_form
     Friend WithEvents Side_panel As FlowLayoutPanel
     Friend WithEvents SideInnerPanel1 As Panel
     Friend WithEvents BulkUpdateBtn As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents sideheader_lbl As Label
     Friend WithEvents SideBackBtn As Button
     Friend WithEvents SideInnerPanel2 As Panel
-    Friend WithEvents Button1 As Button
+    Friend WithEvents SideBackBtn2 As Button
     Friend WithEvents Label3 As Label
-    Friend WithEvents Search_panel As Panel
-    Friend WithEvents Main_panel As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents LoadIdBtn As Button
     Friend WithEvents LoanIdText As TextBox
@@ -633,19 +789,33 @@ Partial Class Loans_form
     Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
     Friend WithEvents DBInsertBtn As Button
     Friend WithEvents DBUpdateBtn As Button
+    Friend WithEvents status_lbl As Label
+    Friend WithEvents Search_panel As Panel
+    Friend WithEvents search_pic As PictureBox
+    Friend WithEvents asda As FlowLayoutPanel
+    Friend WithEvents amount_txt As TextBox
+    Friend WithEvents amount_lbl As Label
+    Friend WithEvents type_lbl As Label
+    Friend WithEvents type_cbbox As ComboBox
+    Friend WithEvents id_lbl As Label
+    Friend WithEvents id_txt As TextBox
+    Friend WithEvents Main_panel As Panel
+    Friend WithEvents SelectAllBtn As Button
+    Friend WithEvents select_lbl As Label
     Friend WithEvents LoanDg As DataGridView
+    Friend WithEvents Statuslbl As Label
+    Friend WithEvents status_txt As TextBox
+    Friend WithEvents StatusCbbox As ComboBox
+    Friend WithEvents status_cbbox As ComboBox
+    Friend WithEvents ExportBtn As Button
+    Friend WithEvents date_lbl As Label
+    Friend WithEvents time_lbl As Label
     Friend WithEvents col_loanid As DataGridViewTextBoxColumn
     Friend WithEvents col_transactype As DataGridViewTextBoxColumn
     Friend WithEvents col_amount As DataGridViewTextBoxColumn
     Friend WithEvents col_date As DataGridViewTextBoxColumn
     Friend WithEvents col_time As DataGridViewTextBoxColumn
     Friend WithEvents col_status As DataGridViewTextBoxColumn
-    Friend WithEvents type_lbl As Label
-    Friend WithEvents type_cbbox As ComboBox
-    Friend WithEvents id_lbl As Label
-    Friend WithEvents id_txt As TextBox
-    Friend WithEvents amount_txt As TextBox
-    Friend WithEvents amount_lbl As Label
-    Friend WithEvents search_pic As PictureBox
-    Friend WithEvents select_lbl As Label
+    Friend WithEvents date_cbbox As ComboBox
+    Friend WithEvents time_dtp As DateTimePicker
 End Class

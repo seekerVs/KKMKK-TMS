@@ -157,11 +157,20 @@
   <data name="fluent__arrow_clockwise_24_filled2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fluent--arrow-clockwise-24-filled (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fluent__arrow_export_ltr_32_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--arrow-export-ltr-24-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="fluent__arrow_left_12_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fluent--arrow-left-12-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fluent__search_24_regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fluent--search-24-regular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__select_all_off_20_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--select-all-off-20-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fluent__select_all_on_20_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluent--select-all-on-20-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fluent__table_delete_row_20_filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fluent--table-delete-row-20-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -1,6 +1,6 @@
 ﻿Public Class Main_form
 
-    Sub ChildForm(ByVal panel As Form)
+    Sub ChildForm(panel As Form)
         Main_panel.Controls.Clear()
         panel.TopLevel = False
         panel.Dock = DockStyle.Fill
