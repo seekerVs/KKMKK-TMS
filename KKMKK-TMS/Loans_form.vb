@@ -7,9 +7,7 @@ Public Class Loans_form
     Dim isSelectAll As Boolean = False
 
     Private Sub Loans_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        setLoanCbboxItem()
         Side_panel.Visible = False
-        LoadDatagrid("SELECT * FROM loans")
         ResetForm()
     End Sub
 
@@ -103,9 +101,9 @@ Public Class Loans_form
         type_cbbox.Update()
         amount_txt.Clear()
         status_cbbox.Text = Nothing
-        time_dtp.CustomFormat = " "  'An empty SPACE
-        time_dtp.Format = DateTimePickerFormat.Custom
-        date_cbbox.Text = Nothing
+        datefrom_dtp.CustomFormat = " "  'An empty SPACE
+        dateto_dtp.CustomFormat = " "
+        'time_dtp.Format = DateTimePickerFormat.Custom
     End Sub
 
     Private Sub SideBackBtn_Click(sender As Object, e As EventArgs) Handles SideBackBtn.Click
@@ -141,48 +139,15 @@ Public Class Loans_form
         Try
             ReadQuery(str)
             LoanDg.Rows.Clear()
+            Debug.Write("LoanDg.ColumnCount.ToString()")
+            Debug.WriteLine(LoanDg.ColumnCount.ToString())
+
             With cmdread
                 While .Read
                     LoanDg.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5))
                 End While
             End With
             LoanDg.ClearSelection()
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical)
-        End Try
-    End Sub
-
-    Private Sub setLoanCbboxItem()
-        Try
-
-            date_cbbox.Items.Clear()
-            'time_cbbox.Items.Clear()
-            date_cbbox.Items.Add("")
-            'time_cbbox.Items.Add("")
-            Dim queryStr As String = "SELECT * FROM LOANS"
-            ReadQuery(queryStr)
-            With cmdread
-                Dim uniqueDates As New HashSet(Of String)()
-                Dim uniqueTimes As New HashSet(Of String)()
-                While .Read
-                    Dim date1 As Date = .GetValue(3)
-                    Dim dateStr As String = date1.ToString("yyyy-MM-dd")
-                    Dim time1 As TimeSpan = .GetValue(4)
-                    Dim timeStr As String = time1.ToString()
-
-                    ' Add items to the HashSet
-                    uniqueDates.Add(dateStr)
-                    uniqueTimes.Add(timeStr)
-                End While
-
-                ' Add item to combobox
-                For Each item In uniqueDates
-                    date_cbbox.Items.Add(item)
-                Next
-                For Each item In uniqueTimes
-                    'time_cbbox.Items.Add(item)
-                Next
-            End With
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
@@ -279,8 +244,8 @@ Public Class Loans_form
         Dim loanId As String = id_txt.Text.Trim()
         Dim transacType As String = type_cbbox.Text.Trim()
         Dim amount As String = amount_txt.Text.Trim()
-        Dim datedtp As String = date_cbbox.Text
-        Dim timedtp As String = time_dtp.Text
+        'Dim datedtp As String = date_cbbox.Text
+        'Dim timedtp As String = time_dtp.Text
         Dim status As String = status_cbbox.Text
 
         Dim whereClause As String = String.Empty
@@ -291,6 +256,9 @@ Public Class Loans_form
             End If
             whereClause &= " Loan_ID LIKE '%" & loanId & "%'"
         End If
+
+        Dim dates As Date = DateTime.Now
+        dates.ToString()
 
         Debug.WriteLine(transacType.Length)
         If transacType.Length > 0 Then
@@ -308,22 +276,23 @@ Public Class Loans_form
             whereClause &= " Amount LIKE '%" & amount & "%'"
         End If
 
-        Debug.WriteLine(datedtp.Length)
-        If datedtp.Length > 0 Then
-            If whereClause.Length > 0 Then
-                whereClause &= " AND "
-            End If
-            whereClause &= " Date = '" & datedtp & "'"
-        End If
+        'Debug.WriteLine(datedtp.Length)
+        'If datedtp.Length > 0 Then
+        '    If whereClause.Length > 0 Then
+        '        whereClause &= " AND "
+        '    End If
+        '    whereClause &= " Date = '" & datedtp & "'"
+        'End If
 
-        Debug.WriteLine(timedtp.Length)
-        Debug.WriteLine(timedtp.GetType())
-        If timedtp.Length > 1 Then
-            If whereClause.Length > 0 Then
-                whereClause &= " AND "
-            End If
-            whereClause &= " Time LIKE '%" & timedtp & "%'"
-        End If
+        'Debug.WriteLine(timedtp.Length)
+        'Debug.WriteLine(timedtp.GetType())
+        'Debug.WriteLine(timedtp)
+        'If timedtp.Length > 1 Then
+        '    If whereClause.Length > 0 Then
+        '        whereClause &= " AND "
+        '    End If
+        '    whereClause &= " Time LIKE '%" & timedtp & "%'"
+        'End If
 
         Debug.WriteLine(status.Length)
         If status.Length > 0 Then
@@ -344,28 +313,38 @@ Public Class Loans_form
         LoanSearchQuery()
     End Sub
 
-    Private Sub amount_txt_TextChanged(sender As Object, e As EventArgs) Handles amount_txt.TextChanged
+    Private Sub amount_txt_TextChanged(sender As Object, e As EventArgs)
         LoanSearchQuery()
     End Sub
 
-    Private Sub type_cbbox_SelectedValueChanged(sender As Object, e As EventArgs) Handles type_cbbox.SelectedIndexChanged
+    Private Sub type_cbbox_SelectedValueChanged(sender As Object, e As EventArgs) Handles type_cbbox.SelectedValueChanged
         LoanSearchQuery()
     End Sub
 
-    Private Sub status_cbbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles status_cbbox.SelectedIndexChanged
+    Private Sub status_cbbox_SelectedIndexChanged(sender As Object, e As EventArgs)
         LoanSearchQuery()
     End Sub
 
-    Private Sub date_cbbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles date_cbbox.SelectedIndexChanged
+    Private Sub date_cbbox_SelectedIndexChanged(sender As Object, e As EventArgs)
         LoanSearchQuery()
     End Sub
 
-    Private Sub time_cbbox_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub status_cbbox_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles status_cbbox.SelectedIndexChanged
         LoanSearchQuery()
     End Sub
 
-    Private Sub time_dtp_ValueChanged(sender As Object, e As EventArgs) Handles time_dtp.ValueChanged
-        time_dtp.CustomFormat = "hh:mm:ss"
+    Private Sub datefrom_dtp_ValueChanged(sender As Object, e As EventArgs) Handles datefrom_dtp.ValueChanged
+        LoanSearchQuery()
+    End Sub
+
+    Private Sub datefrom_dtp_Enter(sender As Object, e As EventArgs) Handles datefrom_dtp.Enter
+        datefrom_dtp.CustomFormat = "yyyy/MM/dd"
+        dateto_dtp.CustomFormat = "yyyy/MM/dd"
+    End Sub
+
+    Private Sub dateto_dtp_Enter(sender As Object, e As EventArgs) Handles dateto_dtp.Enter
+        datefrom_dtp.CustomFormat = "yyyy/MM/dd"
+        dateto_dtp.CustomFormat = "yyyy/MM/dd"
     End Sub
 
     Private Sub DBUpdateBtn_Click(sender As Object, e As EventArgs) Handles DBUpdateBtn.Click
@@ -411,5 +390,6 @@ Public Class Loans_form
         SideInnerPanel1.Visible = False
         SideInnerPanel2.Visible = True
     End Sub
+
 
 End Class

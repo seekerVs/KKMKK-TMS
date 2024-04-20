@@ -30,7 +30,7 @@ Partial Class Loans_form
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        FlowLayoutPanel1 = New FlowLayoutPanel()
+        Menu_fpanel = New FlowLayoutPanel()
         refreshBtn = New Button()
         Label2 = New Label()
         createBtn = New Button()
@@ -59,21 +59,29 @@ Partial Class Loans_form
         SideInnerPanel2 = New Panel()
         SideBackBtn2 = New Button()
         Label3 = New Label()
-        Search_panel = New Panel()
-        asda = New FlowLayoutPanel()
-        id_lbl = New Label()
-        id_txt = New TextBox()
-        type_lbl = New Label()
-        type_cbbox = New ComboBox()
-        amount_lbl = New Label()
-        amount_txt = New TextBox()
-        date_lbl = New Label()
-        date_cbbox = New ComboBox()
-        time_lbl = New Label()
-        time_dtp = New DateTimePicker()
-        Statuslbl = New Label()
-        status_cbbox = New ComboBox()
+        Search_mainpanel = New Panel()
         search_pic = New PictureBox()
+        Search_panel = New FlowLayoutPanel()
+        Label1 = New Label()
+        id_txt = New TextBox()
+        Label6 = New Label()
+        type_cbbox = New ComboBox()
+        Label7 = New Label()
+        amount_txt = New TextBox()
+        Label8 = New Label()
+        Panel1 = New Panel()
+        dateto_dtp = New DateTimePicker()
+        Label10 = New Label()
+        datefrom_dtp = New DateTimePicker()
+        Label9 = New Label()
+        Label11 = New Label()
+        Panel2 = New Panel()
+        timeto_dtp = New DateTimePicker()
+        Label12 = New Label()
+        timefrom_dtp = New DateTimePicker()
+        Label13 = New Label()
+        Label14 = New Label()
+        status_cbbox = New ComboBox()
         Main_panel = New Panel()
         SelectAllBtn = New Button()
         select_lbl = New Label()
@@ -84,36 +92,39 @@ Partial Class Loans_form
         col_date = New DataGridViewTextBoxColumn()
         col_time = New DataGridViewTextBoxColumn()
         col_status = New DataGridViewTextBoxColumn()
-        FlowLayoutPanel1.SuspendLayout()
+        col_loanids = New DataGridViewTextBoxColumn()
+        col_types = New DataGridViewTextBoxColumn()
+        Menu_fpanel.SuspendLayout()
         Side_panel.SuspendLayout()
         SideInnerPanel1.SuspendLayout()
         FlowLayoutPanel2.SuspendLayout()
         SideInnerPanel2.SuspendLayout()
-        Search_panel.SuspendLayout()
-        asda.SuspendLayout()
+        Search_mainpanel.SuspendLayout()
         CType(search_pic, ComponentModel.ISupportInitialize).BeginInit()
+        Search_panel.SuspendLayout()
+        Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
         Main_panel.SuspendLayout()
         CType(LoanDg, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' FlowLayoutPanel1
+        ' Menu_fpanel
         ' 
-        FlowLayoutPanel1.AutoSize = True
-        FlowLayoutPanel1.BackColor = SystemColors.ActiveBorder
-        FlowLayoutPanel1.Controls.Add(refreshBtn)
-        FlowLayoutPanel1.Controls.Add(Label2)
-        FlowLayoutPanel1.Controls.Add(createBtn)
-        FlowLayoutPanel1.Controls.Add(updateBtn)
-        FlowLayoutPanel1.Controls.Add(deleteBtn)
-        FlowLayoutPanel1.Controls.Add(BulkUpdateBtn)
-        FlowLayoutPanel1.Controls.Add(BulkDeleteBtn)
-        FlowLayoutPanel1.Controls.Add(ExportBtn)
-        FlowLayoutPanel1.Dock = DockStyle.Top
-        FlowLayoutPanel1.Location = New Point(0, 0)
-        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Padding = New Padding(20, 10, 20, 10)
-        FlowLayoutPanel1.Size = New Size(1465, 68)
-        FlowLayoutPanel1.TabIndex = 1
+        Menu_fpanel.BackColor = SystemColors.ActiveBorder
+        Menu_fpanel.Controls.Add(refreshBtn)
+        Menu_fpanel.Controls.Add(Label2)
+        Menu_fpanel.Controls.Add(createBtn)
+        Menu_fpanel.Controls.Add(updateBtn)
+        Menu_fpanel.Controls.Add(deleteBtn)
+        Menu_fpanel.Controls.Add(BulkUpdateBtn)
+        Menu_fpanel.Controls.Add(BulkDeleteBtn)
+        Menu_fpanel.Controls.Add(ExportBtn)
+        Menu_fpanel.Dock = DockStyle.Top
+        Menu_fpanel.Location = New Point(0, 0)
+        Menu_fpanel.Name = "Menu_fpanel"
+        Menu_fpanel.Padding = New Padding(20, 10, 20, 10)
+        Menu_fpanel.Size = New Size(1465, 68)
+        Menu_fpanel.TabIndex = 1
         ' 
         ' refreshBtn
         ' 
@@ -248,7 +259,7 @@ Partial Class Loans_form
         SideInnerPanel1.Location = New Point(0, 0)
         SideInnerPanel1.Margin = New Padding(0)
         SideInnerPanel1.Name = "SideInnerPanel1"
-        SideInnerPanel1.Size = New Size(294, 434)
+        SideInnerPanel1.Size = New Size(294, 370)
         SideInnerPanel1.TabIndex = 0
         ' 
         ' StatusCbbox
@@ -408,10 +419,10 @@ Partial Class Loans_form
         SideInnerPanel2.BackColor = SystemColors.ControlDark
         SideInnerPanel2.Controls.Add(SideBackBtn2)
         SideInnerPanel2.Controls.Add(Label3)
-        SideInnerPanel2.Location = New Point(0, 434)
+        SideInnerPanel2.Location = New Point(0, 370)
         SideInnerPanel2.Margin = New Padding(0)
         SideInnerPanel2.Name = "SideInnerPanel2"
-        SideInnerPanel2.Size = New Size(294, 434)
+        SideInnerPanel2.Size = New Size(294, 370)
         SideInnerPanel2.TabIndex = 1
         ' 
         ' SideBackBtn2
@@ -437,178 +448,275 @@ Partial Class Loans_form
         Label3.TabIndex = 0
         Label3.Text = "Bulk Update"
         ' 
-        ' Search_panel
+        ' Search_mainpanel
         ' 
-        Search_panel.Controls.Add(asda)
-        Search_panel.Controls.Add(search_pic)
-        Search_panel.Dock = DockStyle.Top
-        Search_panel.Location = New Point(294, 68)
-        Search_panel.Name = "Search_panel"
-        Search_panel.Size = New Size(1171, 52)
-        Search_panel.TabIndex = 8
-        ' 
-        ' asda
-        ' 
-        asda.Anchor = AnchorStyles.Left Or AnchorStyles.Right
-        asda.AutoScroll = True
-        asda.Controls.Add(id_lbl)
-        asda.Controls.Add(id_txt)
-        asda.Controls.Add(type_lbl)
-        asda.Controls.Add(type_cbbox)
-        asda.Controls.Add(amount_lbl)
-        asda.Controls.Add(amount_txt)
-        asda.Controls.Add(date_lbl)
-        asda.Controls.Add(date_cbbox)
-        asda.Controls.Add(time_lbl)
-        asda.Controls.Add(time_dtp)
-        asda.Controls.Add(Statuslbl)
-        asda.Controls.Add(status_cbbox)
-        asda.Location = New Point(0, 0)
-        asda.Margin = New Padding(0)
-        asda.Name = "asda"
-        asda.Padding = New Padding(20, 10, 10, 10)
-        asda.Size = New Size(1127, 52)
-        asda.TabIndex = 24
-        asda.WrapContents = False
-        ' 
-        ' id_lbl
-        ' 
-        id_lbl.AutoSize = True
-        id_lbl.Font = New Font("Segoe UI", 9.75F)
-        id_lbl.Location = New Point(23, 16)
-        id_lbl.Margin = New Padding(3, 6, 3, 3)
-        id_lbl.Name = "id_lbl"
-        id_lbl.Size = New Size(52, 17)
-        id_lbl.TabIndex = 17
-        id_lbl.Text = "Loan ID"
-        ' 
-        ' id_txt
-        ' 
-        id_txt.Location = New Point(81, 13)
-        id_txt.Margin = New Padding(3, 3, 20, 3)
-        id_txt.MaxLength = 7
-        id_txt.Name = "id_txt"
-        id_txt.Size = New Size(59, 23)
-        id_txt.TabIndex = 16
-        id_txt.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' type_lbl
-        ' 
-        type_lbl.AutoSize = True
-        type_lbl.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        type_lbl.Location = New Point(163, 16)
-        type_lbl.Margin = New Padding(3, 6, 3, 3)
-        type_lbl.Name = "type_lbl"
-        type_lbl.Size = New Size(105, 17)
-        type_lbl.TabIndex = 19
-        type_lbl.Text = "Transaction Type"
-        ' 
-        ' type_cbbox
-        ' 
-        type_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
-        type_cbbox.Items.AddRange(New Object() {"", "Payment", "Loan Application", "Early Payment", "Disbursement", "Late Fee", "Interest Payment"})
-        type_cbbox.Location = New Point(274, 13)
-        type_cbbox.Margin = New Padding(3, 3, 20, 3)
-        type_cbbox.Name = "type_cbbox"
-        type_cbbox.Size = New Size(132, 23)
-        type_cbbox.TabIndex = 18
-        ' 
-        ' amount_lbl
-        ' 
-        amount_lbl.AutoSize = True
-        amount_lbl.Font = New Font("Segoe UI", 9.75F)
-        amount_lbl.Location = New Point(429, 16)
-        amount_lbl.Margin = New Padding(3, 6, 3, 3)
-        amount_lbl.Name = "amount_lbl"
-        amount_lbl.Size = New Size(53, 17)
-        amount_lbl.TabIndex = 20
-        amount_lbl.Text = "Amount"
-        ' 
-        ' amount_txt
-        ' 
-        amount_txt.Location = New Point(488, 13)
-        amount_txt.Margin = New Padding(3, 3, 20, 3)
-        amount_txt.MaxLength = 10
-        amount_txt.Name = "amount_txt"
-        amount_txt.Size = New Size(77, 23)
-        amount_txt.TabIndex = 21
-        amount_txt.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' date_lbl
-        ' 
-        date_lbl.AutoSize = True
-        date_lbl.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        date_lbl.Location = New Point(588, 16)
-        date_lbl.Margin = New Padding(3, 6, 3, 3)
-        date_lbl.Name = "date_lbl"
-        date_lbl.Size = New Size(35, 17)
-        date_lbl.TabIndex = 26
-        date_lbl.Text = "Date"
-        ' 
-        ' date_cbbox
-        ' 
-        date_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
-        date_cbbox.FormattingEnabled = True
-        date_cbbox.Location = New Point(629, 13)
-        date_cbbox.Margin = New Padding(3, 3, 20, 3)
-        date_cbbox.Name = "date_cbbox"
-        date_cbbox.Size = New Size(121, 23)
-        date_cbbox.TabIndex = 29
-        ' 
-        ' time_lbl
-        ' 
-        time_lbl.AutoSize = True
-        time_lbl.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        time_lbl.Location = New Point(773, 16)
-        time_lbl.Margin = New Padding(3, 6, 3, 3)
-        time_lbl.Name = "time_lbl"
-        time_lbl.Size = New Size(36, 17)
-        time_lbl.TabIndex = 28
-        time_lbl.Text = "Time"
-        ' 
-        ' time_dtp
-        ' 
-        time_dtp.CustomFormat = "hh:mm:ss"
-        time_dtp.Format = DateTimePickerFormat.Custom
-        time_dtp.Location = New Point(815, 13)
-        time_dtp.Margin = New Padding(3, 3, 20, 3)
-        time_dtp.Name = "time_dtp"
-        time_dtp.ShowUpDown = True
-        time_dtp.Size = New Size(82, 23)
-        time_dtp.TabIndex = 30
-        ' 
-        ' Statuslbl
-        ' 
-        Statuslbl.AutoSize = True
-        Statuslbl.Font = New Font("Segoe UI", 9.75F)
-        Statuslbl.Location = New Point(920, 16)
-        Statuslbl.Margin = New Padding(3, 6, 3, 3)
-        Statuslbl.Name = "Statuslbl"
-        Statuslbl.Size = New Size(43, 17)
-        Statuslbl.TabIndex = 22
-        Statuslbl.Text = "Status"
-        ' 
-        ' status_cbbox
-        ' 
-        status_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
-        status_cbbox.FormattingEnabled = True
-        status_cbbox.Items.AddRange(New Object() {"", "Pending", "Processing", "Approved", "Denied"})
-        status_cbbox.Location = New Point(969, 13)
-        status_cbbox.Margin = New Padding(3, 3, 20, 3)
-        status_cbbox.Name = "status_cbbox"
-        status_cbbox.Size = New Size(114, 23)
-        status_cbbox.TabIndex = 24
+        Search_mainpanel.AutoScroll = True
+        Search_mainpanel.Controls.Add(search_pic)
+        Search_mainpanel.Controls.Add(Search_panel)
+        Search_mainpanel.Dock = DockStyle.Top
+        Search_mainpanel.Location = New Point(294, 68)
+        Search_mainpanel.Margin = New Padding(0)
+        Search_mainpanel.Name = "Search_mainpanel"
+        Search_mainpanel.Padding = New Padding(0, 20, 0, 0)
+        Search_mainpanel.Size = New Size(1171, 71)
+        Search_mainpanel.TabIndex = 8
         ' 
         ' search_pic
         ' 
         search_pic.Anchor = AnchorStyles.Right
         search_pic.Image = My.Resources.Resources.fluent__search_24_regular
-        search_pic.Location = New Point(1130, 14)
+        search_pic.Location = New Point(1121, 23)
         search_pic.Name = "search_pic"
         search_pic.Size = New Size(24, 24)
         search_pic.SizeMode = PictureBoxSizeMode.AutoSize
-        search_pic.TabIndex = 23
+        search_pic.TabIndex = 25
         search_pic.TabStop = False
+        ' 
+        ' Search_panel
+        ' 
+        Search_panel.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        Search_panel.AutoScroll = True
+        Search_panel.Controls.Add(Label1)
+        Search_panel.Controls.Add(id_txt)
+        Search_panel.Controls.Add(Label6)
+        Search_panel.Controls.Add(type_cbbox)
+        Search_panel.Controls.Add(Label7)
+        Search_panel.Controls.Add(amount_txt)
+        Search_panel.Controls.Add(Label8)
+        Search_panel.Controls.Add(Panel1)
+        Search_panel.Controls.Add(Label11)
+        Search_panel.Controls.Add(Panel2)
+        Search_panel.Controls.Add(Label14)
+        Search_panel.Controls.Add(status_cbbox)
+        Search_panel.Location = New Point(0, 3)
+        Search_panel.Margin = New Padding(0)
+        Search_panel.Name = "Search_panel"
+        Search_panel.Padding = New Padding(20, 0, 20, 0)
+        Search_panel.Size = New Size(1118, 71)
+        Search_panel.TabIndex = 24
+        Search_panel.WrapContents = False
+        ' 
+        ' Label1
+        ' 
+        Label1.Anchor = AnchorStyles.Left
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
+        Label1.Location = New Point(20, 25)
+        Label1.Margin = New Padding(0, 0, 5, 0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(53, 17)
+        Label1.TabIndex = 0
+        Label1.Text = "Loan Id"
+        ' 
+        ' id_txt
+        ' 
+        id_txt.Anchor = AnchorStyles.Left
+        id_txt.Location = New Point(78, 22)
+        id_txt.Margin = New Padding(0, 0, 20, 0)
+        id_txt.Name = "id_txt"
+        id_txt.Size = New Size(100, 23)
+        id_txt.TabIndex = 1
+        ' 
+        ' Label6
+        ' 
+        Label6.Anchor = AnchorStyles.Left
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
+        Label6.Location = New Point(198, 25)
+        Label6.Margin = New Padding(0, 0, 5, 0)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(109, 17)
+        Label6.TabIndex = 2
+        Label6.Text = "Transaction Type"
+        ' 
+        ' type_cbbox
+        ' 
+        type_cbbox.Anchor = AnchorStyles.Left
+        type_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        type_cbbox.FormattingEnabled = True
+        type_cbbox.Items.AddRange(New Object() {"", "Payment", "Loan Application", "Late Fee", "Ineterest Payment", "Early Payment", "Disbursement"})
+        type_cbbox.Location = New Point(312, 22)
+        type_cbbox.Margin = New Padding(0, 0, 20, 0)
+        type_cbbox.Name = "type_cbbox"
+        type_cbbox.Size = New Size(107, 23)
+        type_cbbox.TabIndex = 3
+        ' 
+        ' Label7
+        ' 
+        Label7.Anchor = AnchorStyles.Left
+        Label7.AutoSize = True
+        Label7.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.Location = New Point(439, 25)
+        Label7.Margin = New Padding(0, 0, 5, 0)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(58, 17)
+        Label7.TabIndex = 4
+        Label7.Text = "Amount"
+        ' 
+        ' amount_txt
+        ' 
+        amount_txt.Anchor = AnchorStyles.Left
+        amount_txt.Location = New Point(502, 22)
+        amount_txt.Margin = New Padding(0, 0, 20, 0)
+        amount_txt.Name = "amount_txt"
+        amount_txt.Size = New Size(100, 23)
+        amount_txt.TabIndex = 5
+        ' 
+        ' Label8
+        ' 
+        Label8.Anchor = AnchorStyles.Left
+        Label8.AutoSize = True
+        Label8.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
+        Label8.Location = New Point(622, 25)
+        Label8.Margin = New Padding(0, 0, 5, 0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(36, 17)
+        Label8.TabIndex = 8
+        Label8.Text = "Date"
+        ' 
+        ' Panel1
+        ' 
+        Panel1.Controls.Add(dateto_dtp)
+        Panel1.Controls.Add(Label10)
+        Panel1.Controls.Add(datefrom_dtp)
+        Panel1.Controls.Add(Label9)
+        Panel1.Location = New Point(663, 0)
+        Panel1.Margin = New Padding(0, 0, 20, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(138, 68)
+        Panel1.TabIndex = 7
+        ' 
+        ' dateto_dtp
+        ' 
+        dateto_dtp.CustomFormat = "yyyy/MM/dd"
+        dateto_dtp.Format = DateTimePickerFormat.Custom
+        dateto_dtp.Location = New Point(45, 38)
+        dateto_dtp.MaxDate = New Date(2024, 4, 20, 0, 0, 0, 0)
+        dateto_dtp.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
+        dateto_dtp.Name = "dateto_dtp"
+        dateto_dtp.Size = New Size(89, 23)
+        dateto_dtp.TabIndex = 3
+        dateto_dtp.Value = New Date(2024, 4, 20, 0, 0, 0, 0)
+        ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Location = New Point(4, 41)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(22, 15)
+        Label10.TabIndex = 2
+        Label10.Text = "To:"
+        ' 
+        ' datefrom_dtp
+        ' 
+        datefrom_dtp.CustomFormat = "yyyy/MM/dd"
+        datefrom_dtp.Format = DateTimePickerFormat.Custom
+        datefrom_dtp.Location = New Point(45, 9)
+        datefrom_dtp.MaxDate = New Date(2024, 4, 20, 0, 0, 0, 0)
+        datefrom_dtp.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
+        datefrom_dtp.Name = "datefrom_dtp"
+        datefrom_dtp.Size = New Size(89, 23)
+        datefrom_dtp.TabIndex = 1
+        datefrom_dtp.Value = New Date(2000, 12, 31, 0, 0, 0, 0)
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Location = New Point(4, 12)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(38, 15)
+        Label9.TabIndex = 0
+        Label9.Text = "From:"
+        ' 
+        ' Label11
+        ' 
+        Label11.Anchor = AnchorStyles.Left
+        Label11.AutoSize = True
+        Label11.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
+        Label11.Location = New Point(821, 25)
+        Label11.Margin = New Padding(0, 0, 5, 0)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(37, 17)
+        Label11.TabIndex = 9
+        Label11.Text = "Time"
+        ' 
+        ' Panel2
+        ' 
+        Panel2.Controls.Add(timeto_dtp)
+        Panel2.Controls.Add(Label12)
+        Panel2.Controls.Add(timefrom_dtp)
+        Panel2.Controls.Add(Label13)
+        Panel2.Location = New Point(863, 0)
+        Panel2.Margin = New Padding(0, 0, 20, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(138, 68)
+        Panel2.TabIndex = 10
+        ' 
+        ' timeto_dtp
+        ' 
+        timeto_dtp.CustomFormat = "hh:mm:ss"
+        timeto_dtp.Format = DateTimePickerFormat.Time
+        timeto_dtp.Location = New Point(45, 38)
+        timeto_dtp.Name = "timeto_dtp"
+        timeto_dtp.ShowUpDown = True
+        timeto_dtp.Size = New Size(89, 23)
+        timeto_dtp.TabIndex = 3
+        ' 
+        ' Label12
+        ' 
+        Label12.Anchor = AnchorStyles.Left
+        Label12.AutoSize = True
+        Label12.Location = New Point(4, 41)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(22, 15)
+        Label12.TabIndex = 2
+        Label12.Text = "To:"
+        ' 
+        ' timefrom_dtp
+        ' 
+        timefrom_dtp.CustomFormat = "hh:mm:ss"
+        timefrom_dtp.Format = DateTimePickerFormat.Time
+        timefrom_dtp.Location = New Point(45, 9)
+        timefrom_dtp.MaxDate = New Date(2024, 4, 20, 15, 22, 37, 0)
+        timefrom_dtp.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
+        timefrom_dtp.Name = "timefrom_dtp"
+        timefrom_dtp.ShowUpDown = True
+        timefrom_dtp.Size = New Size(89, 23)
+        timefrom_dtp.TabIndex = 1
+        timefrom_dtp.Value = New Date(2024, 4, 20, 0, 0, 0, 0)
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Location = New Point(4, 12)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(38, 15)
+        Label13.TabIndex = 0
+        Label13.Text = "From:"
+        ' 
+        ' Label14
+        ' 
+        Label14.Anchor = AnchorStyles.Left
+        Label14.AutoSize = True
+        Label14.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label14.Location = New Point(1021, 25)
+        Label14.Margin = New Padding(0, 0, 5, 0)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(46, 17)
+        Label14.TabIndex = 11
+        Label14.Text = "Status"
+        ' 
+        ' status_cbbox
+        ' 
+        status_cbbox.Anchor = AnchorStyles.Left
+        status_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        status_cbbox.FormattingEnabled = True
+        status_cbbox.Items.AddRange(New Object() {"", "Processing", "Pending", "Denied", "Approved"})
+        status_cbbox.Location = New Point(1072, 22)
+        status_cbbox.Margin = New Padding(0, 0, 20, 0)
+        status_cbbox.Name = "status_cbbox"
+        status_cbbox.Size = New Size(107, 23)
+        status_cbbox.TabIndex = 12
         ' 
         ' Main_panel
         ' 
@@ -616,9 +724,9 @@ Partial Class Loans_form
         Main_panel.Controls.Add(select_lbl)
         Main_panel.Controls.Add(LoanDg)
         Main_panel.Dock = DockStyle.Fill
-        Main_panel.Location = New Point(294, 120)
+        Main_panel.Location = New Point(294, 139)
         Main_panel.Name = "Main_panel"
-        Main_panel.Size = New Size(1171, 582)
+        Main_panel.Size = New Size(1171, 563)
         Main_panel.TabIndex = 9
         ' 
         ' SelectAllBtn
@@ -665,7 +773,7 @@ Partial Class Loans_form
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
         LoanDg.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         LoanDg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        LoanDg.Columns.AddRange(New DataGridViewColumn() {col_loanid, col_transactype, col_amount, col_date, col_time, col_status})
+        LoanDg.Columns.AddRange(New DataGridViewColumn() {col_loanid, col_transactype, col_amount, col_date, col_time, col_status, col_loanids, col_types})
         LoanDg.Location = New Point(22, 30)
         LoanDg.Name = "LoanDg"
         LoanDg.ReadOnly = True
@@ -685,7 +793,7 @@ Partial Class Loans_form
         DataGridViewCellStyle7.SelectionForeColor = SystemColors.ControlText
         LoanDg.RowsDefaultCellStyle = DataGridViewCellStyle7
         LoanDg.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        LoanDg.Size = New Size(1124, 531)
+        LoanDg.Size = New Size(1124, 509)
         LoanDg.TabIndex = 0
         ' 
         ' col_loanid
@@ -733,37 +841,52 @@ Partial Class Loans_form
         col_status.Name = "col_status"
         col_status.ReadOnly = True
         ' 
+        ' col_loanids
+        ' 
+        col_loanids.HeaderText = "Loan ID"
+        col_loanids.Name = "col_loanids"
+        col_loanids.ReadOnly = True
+        ' 
+        ' col_types
+        ' 
+        col_types.HeaderText = "Transaction Type"
+        col_types.Name = "col_types"
+        col_types.ReadOnly = True
+        ' 
         ' Loans_form
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1465, 702)
         Controls.Add(Main_panel)
-        Controls.Add(Search_panel)
+        Controls.Add(Search_mainpanel)
         Controls.Add(Side_panel)
-        Controls.Add(FlowLayoutPanel1)
+        Controls.Add(Menu_fpanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "Loans_form"
         Text = "Loans_form"
-        FlowLayoutPanel1.ResumeLayout(False)
+        Menu_fpanel.ResumeLayout(False)
         Side_panel.ResumeLayout(False)
         SideInnerPanel1.ResumeLayout(False)
         SideInnerPanel1.PerformLayout()
         FlowLayoutPanel2.ResumeLayout(False)
         SideInnerPanel2.ResumeLayout(False)
         SideInnerPanel2.PerformLayout()
+        Search_mainpanel.ResumeLayout(False)
+        Search_mainpanel.PerformLayout()
+        CType(search_pic, ComponentModel.ISupportInitialize).EndInit()
         Search_panel.ResumeLayout(False)
         Search_panel.PerformLayout()
-        asda.ResumeLayout(False)
-        asda.PerformLayout()
-        CType(search_pic, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         Main_panel.ResumeLayout(False)
         Main_panel.PerformLayout()
         CType(LoanDg, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents Menu_fpanel As FlowLayoutPanel
     Friend WithEvents refreshBtn As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents createBtn As Button
@@ -790,32 +913,42 @@ Partial Class Loans_form
     Friend WithEvents DBInsertBtn As Button
     Friend WithEvents DBUpdateBtn As Button
     Friend WithEvents status_lbl As Label
-    Friend WithEvents Search_panel As Panel
-    Friend WithEvents search_pic As PictureBox
-    Friend WithEvents asda As FlowLayoutPanel
-    Friend WithEvents amount_txt As TextBox
-    Friend WithEvents amount_lbl As Label
-    Friend WithEvents type_lbl As Label
-    Friend WithEvents type_cbbox As ComboBox
-    Friend WithEvents id_lbl As Label
-    Friend WithEvents id_txt As TextBox
+    Friend WithEvents Search_mainpanel As Panel
     Friend WithEvents Main_panel As Panel
     Friend WithEvents SelectAllBtn As Button
     Friend WithEvents select_lbl As Label
     Friend WithEvents LoanDg As DataGridView
-    Friend WithEvents Statuslbl As Label
     Friend WithEvents status_txt As TextBox
     Friend WithEvents StatusCbbox As ComboBox
-    Friend WithEvents status_cbbox As ComboBox
     Friend WithEvents ExportBtn As Button
-    Friend WithEvents date_lbl As Label
-    Friend WithEvents time_lbl As Label
     Friend WithEvents col_loanid As DataGridViewTextBoxColumn
     Friend WithEvents col_transactype As DataGridViewTextBoxColumn
     Friend WithEvents col_amount As DataGridViewTextBoxColumn
     Friend WithEvents col_date As DataGridViewTextBoxColumn
     Friend WithEvents col_time As DataGridViewTextBoxColumn
     Friend WithEvents col_status As DataGridViewTextBoxColumn
-    Friend WithEvents date_cbbox As ComboBox
-    Friend WithEvents time_dtp As DateTimePicker
+    Friend WithEvents Search_panel As FlowLayoutPanel
+    Friend WithEvents search_pic As PictureBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents id_txt As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents type_cbbox As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents amount_txt As TextBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents datefrom_dtp As DateTimePicker
+    Friend WithEvents dateto_dtp As DateTimePicker
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents timeto_dtp As DateTimePicker
+    Friend WithEvents Label12 As Label
+    Friend WithEvents timefrom_dtp As DateTimePicker
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents status_cbbox As ComboBox
+    Friend WithEvents col_loanids As DataGridViewTextBoxColumn
+    Friend WithEvents col_types As DataGridViewTextBoxColumn
 End Class
