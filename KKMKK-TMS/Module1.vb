@@ -16,7 +16,7 @@ Module Module1
     Public strconn As String = "server= " & db_server & "; port=" & db_port & "; userid=" & db_uid & ";password=" & db_pwd & "; database=" & db_name & ";"
 
     ' DB Methods
-    Public Sub ReadQuery(queryStr As String)
+    Public Function ReadQuery(queryStr As String)
         Try
             With conn
                 If .State = ConnectionState.Open Then .Close()
@@ -28,10 +28,12 @@ Module Module1
                 .CommandText = queryStr
                 cmdread = .ExecuteReader
             End With
+            Return 1
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+            Return 0
         End Try
-    End Sub
+    End Function
 
 
     Public Sub InsertLoan(queryStr As String())
@@ -51,14 +53,13 @@ Module Module1
 
                 Dim rowsaffected = cmd.ExecuteNonQuery()
                 If rowsaffected > 0 Then
-                    MsgBox("Record Transaction Added :)", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                    MessageBox.Show("Loan Record Transaction Added :)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
                 Else
-                    MsgBox("Record Insertion Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Loan Record Insertion Failed!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
                 End If
             End With
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
         End Try
     End Sub
 
@@ -68,7 +69,6 @@ Module Module1
         Dim random As New Random()
         Dim IsExist As Boolean = True
         Dim num As Integer
-        'Dim counter As Integer
         While IsExist
             num = random.Next(1000000, 9999999)
             ReadQuery("SELECT * FROM loans WHERE Loan_ID='" & num & "'")
@@ -77,7 +77,6 @@ Module Module1
             Else
                 IsExist = False
             End If
-            'Counter += 1
         End While
         'msgbox("unique id generated, loop count: " & counter.tostring(), msgboxstyle.information, "information")
         Return num
@@ -87,7 +86,6 @@ Module Module1
         Dim random As New Random()
         Dim IsExist As Boolean = True
         Dim num As Integer
-        'Dim counter As Integer
         While IsExist
             num = random.Next(10000, 99999)
             ReadQuery("SELECT * FROM loans WHERE Loan_ID='" & num & "'")
@@ -96,7 +94,6 @@ Module Module1
             Else
                 IsExist = False
             End If
-            'counter += 1
         End While
         'MsgBox("Unique ID Generated, Loop Count: " & counter.ToString(), MsgBoxStyle.Information, "Information")
         Return num

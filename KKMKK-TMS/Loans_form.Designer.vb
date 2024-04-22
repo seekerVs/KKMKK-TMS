@@ -23,13 +23,14 @@ Partial Class Loans_form
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Menu_fpanel = New FlowLayoutPanel()
         refreshBtn = New Button()
         Label2 = New Label()
@@ -57,6 +58,13 @@ Partial Class Loans_form
         SideBackBtn = New Button()
         sideheader_lbl = New Label()
         SideInnerPanel2 = New Panel()
+        Status_cbbox2 = New ComboBox()
+        Label15 = New Label()
+        UpdateBulk_btn = New Button()
+        Label16 = New Label()
+        Amount_txt2 = New TextBox()
+        TransacType_cbbox = New ComboBox()
+        Label17 = New Label()
         SideBackBtn2 = New Button()
         Label3 = New Label()
         Search_mainpanel = New Panel()
@@ -92,8 +100,6 @@ Partial Class Loans_form
         col_date = New DataGridViewTextBoxColumn()
         col_time = New DataGridViewTextBoxColumn()
         col_status = New DataGridViewTextBoxColumn()
-        col_loanids = New DataGridViewTextBoxColumn()
-        col_types = New DataGridViewTextBoxColumn()
         Menu_fpanel.SuspendLayout()
         Side_panel.SuspendLayout()
         SideInnerPanel1.SuspendLayout()
@@ -237,7 +243,7 @@ Partial Class Loans_form
         Side_panel.Location = New Point(0, 68)
         Side_panel.Margin = New Padding(0)
         Side_panel.Name = "Side_panel"
-        Side_panel.Size = New Size(294, 634)
+        Side_panel.Size = New Size(294, 820)
         Side_panel.TabIndex = 2
         ' 
         ' SideInnerPanel1
@@ -417,6 +423,13 @@ Partial Class Loans_form
         ' SideInnerPanel2
         ' 
         SideInnerPanel2.BackColor = SystemColors.ControlDark
+        SideInnerPanel2.Controls.Add(Status_cbbox2)
+        SideInnerPanel2.Controls.Add(Label15)
+        SideInnerPanel2.Controls.Add(UpdateBulk_btn)
+        SideInnerPanel2.Controls.Add(Label16)
+        SideInnerPanel2.Controls.Add(Amount_txt2)
+        SideInnerPanel2.Controls.Add(TransacType_cbbox)
+        SideInnerPanel2.Controls.Add(Label17)
         SideInnerPanel2.Controls.Add(SideBackBtn2)
         SideInnerPanel2.Controls.Add(Label3)
         SideInnerPanel2.Location = New Point(0, 370)
@@ -424,6 +437,77 @@ Partial Class Loans_form
         SideInnerPanel2.Name = "SideInnerPanel2"
         SideInnerPanel2.Size = New Size(294, 370)
         SideInnerPanel2.TabIndex = 1
+        ' 
+        ' Status_cbbox2
+        ' 
+        Status_cbbox2.DropDownStyle = ComboBoxStyle.DropDownList
+        Status_cbbox2.FormattingEnabled = True
+        Status_cbbox2.Items.AddRange(New Object() {"", "Pending", "Processing", "Approved", "Denied"})
+        Status_cbbox2.Location = New Point(31, 245)
+        Status_cbbox2.Name = "Status_cbbox2"
+        Status_cbbox2.Size = New Size(151, 23)
+        Status_cbbox2.TabIndex = 21
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Font = New Font("Segoe UI", 12F)
+        Label15.Location = New Point(31, 221)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(52, 21)
+        Label15.TabIndex = 20
+        Label15.Text = "Status"
+        ' 
+        ' UpdateBulk_btn
+        ' 
+        UpdateBulk_btn.Anchor = AnchorStyles.Top
+        UpdateBulk_btn.BackColor = SystemColors.ButtonHighlight
+        UpdateBulk_btn.FlatStyle = FlatStyle.Flat
+        UpdateBulk_btn.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        UpdateBulk_btn.Location = New Point(111, 302)
+        UpdateBulk_btn.Margin = New Padding(0, 0, 0, 2)
+        UpdateBulk_btn.Name = "UpdateBulk_btn"
+        UpdateBulk_btn.Size = New Size(125, 30)
+        UpdateBulk_btn.TabIndex = 19
+        UpdateBulk_btn.Text = "BULK UPDATE"
+        UpdateBulk_btn.UseVisualStyleBackColor = False
+        ' 
+        ' Label16
+        ' 
+        Label16.AutoSize = True
+        Label16.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label16.Location = New Point(32, 147)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(66, 21)
+        Label16.TabIndex = 16
+        Label16.Text = "Amount"
+        ' 
+        ' Amount_txt2
+        ' 
+        Amount_txt2.Location = New Point(32, 171)
+        Amount_txt2.MaxLength = 10
+        Amount_txt2.Name = "Amount_txt2"
+        Amount_txt2.Size = New Size(138, 23)
+        Amount_txt2.TabIndex = 15
+        ' 
+        ' TransacType_cbbox
+        ' 
+        TransacType_cbbox.DropDownStyle = ComboBoxStyle.DropDownList
+        TransacType_cbbox.Items.AddRange(New Object() {"", "Payment", "Loan Application", "Early Payment", "Disbursement", "Late Fee", "Ineterest Payment"})
+        TransacType_cbbox.Location = New Point(31, 105)
+        TransacType_cbbox.Name = "TransacType_cbbox"
+        TransacType_cbbox.Size = New Size(155, 23)
+        TransacType_cbbox.TabIndex = 14
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoSize = True
+        Label17.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label17.Location = New Point(31, 81)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(125, 21)
+        Label17.TabIndex = 12
+        Label17.Text = "Transaction Type"
         ' 
         ' SideBackBtn2
         ' 
@@ -654,8 +738,8 @@ Partial Class Loans_form
         ' 
         ' timeto_dtp
         ' 
-        timeto_dtp.CustomFormat = "hh:mm:ss"
-        timeto_dtp.Format = DateTimePickerFormat.Time
+        timeto_dtp.CustomFormat = "hh:mm:ss tt"
+        timeto_dtp.Format = DateTimePickerFormat.Custom
         timeto_dtp.Location = New Point(45, 38)
         timeto_dtp.Name = "timeto_dtp"
         timeto_dtp.ShowUpDown = True
@@ -674,8 +758,8 @@ Partial Class Loans_form
         ' 
         ' timefrom_dtp
         ' 
-        timefrom_dtp.CustomFormat = "hh:mm:ss"
-        timefrom_dtp.Format = DateTimePickerFormat.Time
+        timefrom_dtp.CustomFormat = "hh:mm:ss tt"
+        timefrom_dtp.Format = DateTimePickerFormat.Custom
         timefrom_dtp.Location = New Point(45, 9)
         timefrom_dtp.MaxDate = New Date(2024, 4, 20, 15, 22, 37, 0)
         timefrom_dtp.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
@@ -726,7 +810,7 @@ Partial Class Loans_form
         Main_panel.Dock = DockStyle.Fill
         Main_panel.Location = New Point(294, 139)
         Main_panel.Name = "Main_panel"
-        Main_panel.Size = New Size(1171, 563)
+        Main_panel.Size = New Size(1171, 749)
         Main_panel.TabIndex = 9
         ' 
         ' SelectAllBtn
@@ -754,52 +838,51 @@ Partial Class Loans_form
         LoanDg.AllowUserToAddRows = False
         LoanDg.AllowUserToDeleteRows = False
         LoanDg.AllowUserToOrderColumns = True
-        LoanDg.AllowUserToResizeColumns = False
         LoanDg.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = SystemColors.ControlLight
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
-        LoanDg.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.BackColor = SystemColors.ControlLight
+        DataGridViewCellStyle9.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle9.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
+        DataGridViewCellStyle9.SelectionForeColor = SystemColors.ControlText
+        LoanDg.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
         LoanDg.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         LoanDg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = SystemColors.Control
-        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        LoanDg.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = SystemColors.Control
+        DataGridViewCellStyle10.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle10.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
+        LoanDg.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         LoanDg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        LoanDg.Columns.AddRange(New DataGridViewColumn() {col_loanid, col_transactype, col_amount, col_date, col_time, col_status, col_loanids, col_types})
+        LoanDg.Columns.AddRange(New DataGridViewColumn() {col_loanid, col_transactype, col_amount, col_date, col_time, col_status})
         LoanDg.Location = New Point(22, 30)
         LoanDg.Name = "LoanDg"
         LoanDg.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = SystemColors.ButtonShadow
-        DataGridViewCellStyle6.Font = New Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
-        DataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        LoanDg.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = SystemColors.ButtonShadow
+        DataGridViewCellStyle15.Font = New Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle15.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
+        DataGridViewCellStyle15.SelectionForeColor = SystemColors.WindowText
+        DataGridViewCellStyle15.WrapMode = DataGridViewTriState.True
+        LoanDg.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
         LoanDg.RowHeadersVisible = False
-        DataGridViewCellStyle7.BackColor = SystemColors.ControlLightLight
-        DataGridViewCellStyle7.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle7.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
-        DataGridViewCellStyle7.SelectionForeColor = SystemColors.ControlText
-        LoanDg.RowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle16.BackColor = SystemColors.ControlLightLight
+        DataGridViewCellStyle16.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle16.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(CByte(11), CByte(231), CByte(251))
+        DataGridViewCellStyle16.SelectionForeColor = SystemColors.ControlText
+        LoanDg.RowsDefaultCellStyle = DataGridViewCellStyle16
         LoanDg.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        LoanDg.Size = New Size(1124, 509)
+        LoanDg.Size = New Size(1124, 695)
         LoanDg.TabIndex = 0
         ' 
         ' col_loanid
         ' 
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
-        col_loanid.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter
+        col_loanid.DefaultCellStyle = DataGridViewCellStyle11
         col_loanid.HeaderText = "Loan ID"
         col_loanid.Name = "col_loanid"
         col_loanid.ReadOnly = True
@@ -812,9 +895,9 @@ Partial Class Loans_form
         ' 
         ' col_amount
         ' 
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        col_amount.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle12.Format = "N2"
+        DataGridViewCellStyle12.NullValue = Nothing
+        col_amount.DefaultCellStyle = DataGridViewCellStyle12
         col_amount.HeaderText = "Amount"
         col_amount.MaxInputLength = 20
         col_amount.Name = "col_amount"
@@ -822,15 +905,18 @@ Partial Class Loans_form
         ' 
         ' col_date
         ' 
-        DataGridViewCellStyle5.Format = "yyyy-MM-dd"
-        DataGridViewCellStyle5.NullValue = Nothing
-        col_date.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle13.Format = "yyyy/MM/dd"
+        DataGridViewCellStyle13.NullValue = Nothing
+        col_date.DefaultCellStyle = DataGridViewCellStyle13
         col_date.HeaderText = "Date"
         col_date.Name = "col_date"
         col_date.ReadOnly = True
         ' 
         ' col_time
         ' 
+        DataGridViewCellStyle14.Format = "T"
+        DataGridViewCellStyle14.NullValue = Nothing
+        col_time.DefaultCellStyle = DataGridViewCellStyle14
         col_time.HeaderText = "Time"
         col_time.Name = "col_time"
         col_time.ReadOnly = True
@@ -841,23 +927,11 @@ Partial Class Loans_form
         col_status.Name = "col_status"
         col_status.ReadOnly = True
         ' 
-        ' col_loanids
-        ' 
-        col_loanids.HeaderText = "Loan ID"
-        col_loanids.Name = "col_loanids"
-        col_loanids.ReadOnly = True
-        ' 
-        ' col_types
-        ' 
-        col_types.HeaderText = "Transaction Type"
-        col_types.Name = "col_types"
-        col_types.ReadOnly = True
-        ' 
         ' Loans_form
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1465, 702)
+        ClientSize = New Size(1465, 888)
         Controls.Add(Main_panel)
         Controls.Add(Search_mainpanel)
         Controls.Add(Side_panel)
@@ -921,12 +995,6 @@ Partial Class Loans_form
     Friend WithEvents status_txt As TextBox
     Friend WithEvents StatusCbbox As ComboBox
     Friend WithEvents ExportBtn As Button
-    Friend WithEvents col_loanid As DataGridViewTextBoxColumn
-    Friend WithEvents col_transactype As DataGridViewTextBoxColumn
-    Friend WithEvents col_amount As DataGridViewTextBoxColumn
-    Friend WithEvents col_date As DataGridViewTextBoxColumn
-    Friend WithEvents col_time As DataGridViewTextBoxColumn
-    Friend WithEvents col_status As DataGridViewTextBoxColumn
     Friend WithEvents Search_panel As FlowLayoutPanel
     Friend WithEvents search_pic As PictureBox
     Friend WithEvents Label1 As Label
@@ -949,6 +1017,17 @@ Partial Class Loans_form
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents status_cbbox As ComboBox
-    Friend WithEvents col_loanids As DataGridViewTextBoxColumn
-    Friend WithEvents col_types As DataGridViewTextBoxColumn
+    Friend WithEvents col_loanid As DataGridViewTextBoxColumn
+    Friend WithEvents col_transactype As DataGridViewTextBoxColumn
+    Friend WithEvents col_amount As DataGridViewTextBoxColumn
+    Friend WithEvents col_date As DataGridViewTextBoxColumn
+    Friend WithEvents col_time As DataGridViewTextBoxColumn
+    Friend WithEvents col_status As DataGridViewTextBoxColumn
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Amount_txt2 As TextBox
+    Friend WithEvents TransacType_cbbox As ComboBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents UpdateBulk_btn As Button
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Status_cbbox2 As ComboBox
 End Class
