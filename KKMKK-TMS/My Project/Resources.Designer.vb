@@ -183,6 +183,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property fluent__dismiss_24_filled() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("fluent--dismiss-24-filled", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property fluent__home_24_filled() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("fluent--home-24-filled", resourceCulture)
@@ -277,6 +287,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("kkmkk_logo1", resourceCulture)
                 Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property videoplayback() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("videoplayback", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
     End Module

@@ -12,13 +12,14 @@ Module Module1
     Public db_port = "'3307'" 'port
     Public db_uid = "'root'" ' user id
     Public db_pwd = "''" ' password
-    Public db_name = "'kkmkk_tms'" ' database name
+    Public db_name = "''" ' database name
     Public strconn As String = "server= " & db_server & "; port=" & db_port & "; userid=" & db_uid & ";password=" & db_pwd & "; database=" & db_name & ";"
 
     ' DB Methods/Functions
     Public Function ReadQuery(queryStr As String)
         Try
             With conn
+                db_name = "'kkmkk_tms'"
                 If .State = ConnectionState.Open Then .Close()
                 .ConnectionString = strconn
                 .Open()
@@ -29,12 +30,28 @@ Module Module1
                 cmdread = .ExecuteReader
             End With
             Return 1
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
-            Return 0
+        Catch x As Exception
+            Debug.WriteLine($"ERROR: {x}")
+            ' If the main database failed, use the backup
+            Try
+                With conn
+                    db_name = "'kkmkk_tms_backup'"
+                    If .State = ConnectionState.Open Then .Close()
+                    .ConnectionString = strconn
+                    .Open()
+                End With
+                With cmd
+                    .Connection = conn
+                    .CommandText = queryStr
+                    cmdread = .ExecuteReader
+                End With
+                Return 1
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+                Return 0
+            End Try
         End Try
     End Function
-
 
     Public Sub InsertLoan(queryStr As String())
         Try

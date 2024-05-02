@@ -659,6 +659,7 @@ Partial Class Main_form
         TabControl1.ItemSize = New Size(62, 10)
         TabControl1.Location = New Point(0, 25)
         TabControl1.Margin = New Padding(0)
+        TabControl1.MinimumSize = New Size(1556, 824)
         TabControl1.Name = "TabControl1"
         TabControl1.Padding = New Point(0, 0)
         TabControl1.SelectedIndex = 0
@@ -678,7 +679,7 @@ Partial Class Main_form
         ' 
         ' Transaction_tab
         ' 
-        Transaction_tab.BackColor = Color.Tomato
+        Transaction_tab.BackColor = SystemColors.Control
         Transaction_tab.Location = New Point(4, 14)
         Transaction_tab.Margin = New Padding(0)
         Transaction_tab.Name = "Transaction_tab"
@@ -5113,6 +5114,7 @@ Partial Class Main_form
         ' TextBox37
         ' 
         TextBox37.Anchor = AnchorStyles.Left
+        FlowLayoutPanel18.SetFlowBreak(TextBox37, True)
         TextBox37.Location = New Point(895, 20)
         TextBox37.Margin = New Padding(0, 0, 20, 20)
         TextBox37.Name = "TextBox37"
@@ -5124,7 +5126,7 @@ Partial Class Main_form
         Label113.Anchor = AnchorStyles.Left
         Label113.AutoSize = True
         Label113.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label113.Location = New Point(1015, 23)
+        Label113.Location = New Point(20, 66)
         Label113.Margin = New Padding(0, 0, 5, 20)
         Label113.Name = "Label113"
         Label113.Size = New Size(57, 17)
@@ -5134,7 +5136,7 @@ Partial Class Main_form
         ' TextBox39
         ' 
         TextBox39.Anchor = AnchorStyles.Left
-        TextBox39.Location = New Point(20, 63)
+        TextBox39.Location = New Point(82, 63)
         TextBox39.Margin = New Padding(0, 0, 20, 20)
         TextBox39.Name = "TextBox39"
         TextBox39.Size = New Size(173, 23)
@@ -5145,7 +5147,7 @@ Partial Class Main_form
         Label112.Anchor = AnchorStyles.Left
         Label112.AutoSize = True
         Label112.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label112.Location = New Point(213, 66)
+        Label112.Location = New Point(275, 66)
         Label112.Margin = New Padding(0, 0, 5, 20)
         Label112.Name = "Label112"
         Label112.Size = New Size(57, 17)
@@ -5155,7 +5157,7 @@ Partial Class Main_form
         ' TextBox38
         ' 
         TextBox38.Anchor = AnchorStyles.Left
-        TextBox38.Location = New Point(275, 63)
+        TextBox38.Location = New Point(337, 63)
         TextBox38.Margin = New Padding(0, 0, 20, 20)
         TextBox38.Name = "TextBox38"
         TextBox38.Size = New Size(100, 23)
