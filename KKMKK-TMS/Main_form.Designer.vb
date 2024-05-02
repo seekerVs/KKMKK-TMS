@@ -453,10 +453,10 @@ Partial Class Main_form
         TextBox35 = New TextBox()
         Label111 = New Label()
         TextBox37 = New TextBox()
-        Label112 = New Label()
-        TextBox38 = New TextBox()
         Label113 = New Label()
         TextBox39 = New TextBox()
+        Label112 = New Label()
+        TextBox38 = New TextBox()
         FlowLayoutPanel19 = New FlowLayoutPanel()
         Panel27 = New Panel()
         Label115 = New Label()
@@ -4922,7 +4922,7 @@ Partial Class Main_form
         ' 
         DataGridViewCellStyle41.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewTextBoxColumn17.DefaultCellStyle = DataGridViewCellStyle41
-        DataGridViewTextBoxColumn17.HeaderText = "Member ID"
+        DataGridViewTextBoxColumn17.HeaderText = "Staff ID"
         DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
         DataGridViewTextBoxColumn17.ReadOnly = True
         ' 
@@ -5021,14 +5021,14 @@ Partial Class Main_form
         Label102.Location = New Point(20, 23)
         Label102.Margin = New Padding(0, 0, 5, 20)
         Label102.Name = "Label102"
-        Label102.Size = New Size(76, 17)
+        Label102.Size = New Size(52, 17)
         Label102.TabIndex = 0
-        Label102.Text = "Member ID"
+        Label102.Text = "Staff ID"
         ' 
         ' TextBox32
         ' 
         TextBox32.Anchor = AnchorStyles.Left
-        TextBox32.Location = New Point(101, 20)
+        TextBox32.Location = New Point(77, 20)
         TextBox32.Margin = New Padding(0, 0, 20, 20)
         TextBox32.MaxLength = 50
         TextBox32.Name = "TextBox32"
@@ -5040,7 +5040,7 @@ Partial Class Main_form
         Label103.Anchor = AnchorStyles.Left
         Label103.AutoSize = True
         Label103.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label103.Location = New Point(221, 23)
+        Label103.Location = New Point(197, 23)
         Label103.Margin = New Padding(0, 0, 5, 20)
         Label103.Name = "Label103"
         Label103.Size = New Size(68, 17)
@@ -5050,7 +5050,7 @@ Partial Class Main_form
         ' TextBox33
         ' 
         TextBox33.Anchor = AnchorStyles.Left
-        TextBox33.Location = New Point(294, 20)
+        TextBox33.Location = New Point(270, 20)
         TextBox33.Margin = New Padding(0, 0, 20, 20)
         TextBox33.Name = "TextBox33"
         TextBox33.Size = New Size(100, 23)
@@ -5061,7 +5061,7 @@ Partial Class Main_form
         Label104.Anchor = AnchorStyles.Left
         Label104.AutoSize = True
         Label104.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label104.Location = New Point(414, 23)
+        Label104.Location = New Point(390, 23)
         Label104.Margin = New Padding(0, 0, 5, 20)
         Label104.Name = "Label104"
         Label104.Size = New Size(83, 17)
@@ -5071,7 +5071,7 @@ Partial Class Main_form
         ' TextBox34
         ' 
         TextBox34.Anchor = AnchorStyles.Left
-        TextBox34.Location = New Point(502, 20)
+        TextBox34.Location = New Point(478, 20)
         TextBox34.Margin = New Padding(0, 0, 20, 20)
         TextBox34.Name = "TextBox34"
         TextBox34.Size = New Size(100, 23)
@@ -5082,7 +5082,7 @@ Partial Class Main_form
         Label105.Anchor = AnchorStyles.Left
         Label105.AutoSize = True
         Label105.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label105.Location = New Point(622, 23)
+        Label105.Location = New Point(598, 23)
         Label105.Margin = New Padding(0, 0, 5, 20)
         Label105.Name = "Label105"
         Label105.Size = New Size(66, 17)
@@ -5092,7 +5092,7 @@ Partial Class Main_form
         ' TextBox35
         ' 
         TextBox35.Anchor = AnchorStyles.Left
-        TextBox35.Location = New Point(693, 20)
+        TextBox35.Location = New Point(669, 20)
         TextBox35.Margin = New Padding(0, 0, 20, 20)
         TextBox35.Name = "TextBox35"
         TextBox35.Size = New Size(100, 23)
@@ -5103,7 +5103,7 @@ Partial Class Main_form
         Label111.Anchor = AnchorStyles.Left
         Label111.AutoSize = True
         Label111.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label111.Location = New Point(813, 23)
+        Label111.Location = New Point(789, 23)
         Label111.Margin = New Padding(0, 0, 5, 20)
         Label111.Name = "Label111"
         Label111.Size = New Size(101, 17)
@@ -5113,11 +5113,32 @@ Partial Class Main_form
         ' TextBox37
         ' 
         TextBox37.Anchor = AnchorStyles.Left
-        TextBox37.Location = New Point(919, 20)
+        TextBox37.Location = New Point(895, 20)
         TextBox37.Margin = New Padding(0, 0, 20, 20)
         TextBox37.Name = "TextBox37"
         TextBox37.Size = New Size(100, 23)
         TextBox37.TabIndex = 24
+        ' 
+        ' Label113
+        ' 
+        Label113.Anchor = AnchorStyles.Left
+        Label113.AutoSize = True
+        Label113.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
+        Label113.Location = New Point(1015, 23)
+        Label113.Margin = New Padding(0, 0, 5, 20)
+        Label113.Name = "Label113"
+        Label113.Size = New Size(57, 17)
+        Label113.TabIndex = 27
+        Label113.Text = "Address"
+        ' 
+        ' TextBox39
+        ' 
+        TextBox39.Anchor = AnchorStyles.Left
+        TextBox39.Location = New Point(20, 63)
+        TextBox39.Margin = New Padding(0, 0, 20, 20)
+        TextBox39.Name = "TextBox39"
+        TextBox39.Size = New Size(173, 23)
+        TextBox39.TabIndex = 28
         ' 
         ' Label112
         ' 
@@ -5139,27 +5160,6 @@ Partial Class Main_form
         TextBox38.Name = "TextBox38"
         TextBox38.Size = New Size(100, 23)
         TextBox38.TabIndex = 26
-        ' 
-        ' Label113
-        ' 
-        Label113.Anchor = AnchorStyles.Left
-        Label113.AutoSize = True
-        Label113.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold)
-        Label113.Location = New Point(1039, 23)
-        Label113.Margin = New Padding(0, 0, 5, 20)
-        Label113.Name = "Label113"
-        Label113.Size = New Size(57, 17)
-        Label113.TabIndex = 27
-        Label113.Text = "Address"
-        ' 
-        ' TextBox39
-        ' 
-        TextBox39.Anchor = AnchorStyles.Left
-        TextBox39.Location = New Point(20, 63)
-        TextBox39.Margin = New Padding(0, 0, 20, 20)
-        TextBox39.Name = "TextBox39"
-        TextBox39.Size = New Size(173, 23)
-        TextBox39.TabIndex = 28
         ' 
         ' FlowLayoutPanel19
         ' 
@@ -5396,9 +5396,9 @@ Partial Class Main_form
         Label125.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label125.Location = New Point(21, 64)
         Label125.Name = "Label125"
-        Label125.Size = New Size(88, 21)
+        Label125.Size = New Size(60, 21)
         Label125.TabIndex = 2
-        Label125.Text = "Member ID"
+        Label125.Text = "Staff ID"
         ' 
         ' Button61
         ' 
@@ -5419,9 +5419,9 @@ Partial Class Main_form
         Label126.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label126.Location = New Point(20, 13)
         Label126.Name = "Label126"
-        Label126.Size = New Size(162, 21)
+        Label126.Size = New Size(134, 21)
         Label126.TabIndex = 0
-        Label126.Text = "Create New Member"
+        Label126.Text = "Create New Staff"
         ' 
         ' FlowLayoutPanel21
         ' 

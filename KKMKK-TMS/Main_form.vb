@@ -78,7 +78,7 @@ Public Class Main_form
 
 
     ' Navigation and Layout Controls
-    Private Sub x_tab_Enter(sender As Object, e As EventArgs) Handles Loans_tab.Enter
+    Private Sub loans_tab_Enter(sender As Object, e As EventArgs) Handles Loans_tab.Enter
         Side_panel.Visible = False
         ResetForm()
     End Sub
@@ -123,6 +123,7 @@ Public Class Main_form
     Private Sub ClearSearchInputs()
         id_txt.Clear()
         type_cbbox.Text = Nothing
+        amount_txt.Clear()
         status_cbbox.Text = Nothing
         dateto_dtp.MaxDate = DateTime.Now
         datefrom_dtp.CustomFormat = " "  'An empty SPACE
@@ -2099,7 +2100,6 @@ Public Class Main_form
         ClearSideInputs4()
         FlowLayoutPanel15.Visible = False
         Label89.Text = "Create New Member"
-        DBInsertBtn.Visible = True
         Label85.Visible = False
         ComboBox15.Visible = False
         LoadDatagrid4("SELECT * FROM members")
@@ -2582,7 +2582,7 @@ Public Class Main_form
 
     Private Sub Button55_Click(sender As Object, e As EventArgs) Handles Button55.Click
         Dim endCount = DataGridView4.SelectedRows.Count
-        Dim result = MessageBox.Show("Are you sure you want to delete in bulk " & endCount & " loan data?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+        Dim result = MessageBox.Show("Are you sure you want to delete in bulk " & endCount & " member data?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
         If result = DialogResult.Yes Then
             Dim a As Byte
             ' For loop delete execution 
@@ -2610,7 +2610,7 @@ Public Class Main_form
         Dim status = ComboBox15.Text
 
         If fname.Length > 0 Or mname.Length > 0 Or mname.Length > 0 Or lname.Length > 0 Or sex.Length > 0 Or address.Length > 0 Or phonenum.Length > 0 Or occupation.Length > 0 Or annual_inc.Length > 0 Or status.Length > 0 Then
-            Dim result = MessageBox.Show("Are you sure you want to update in bulk " & endCount & " loan data?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+            Dim result = MessageBox.Show("Are you sure you want to update in bulk " & endCount & " member data?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
             If result = DialogResult.Yes Then
                 Dim a As Byte
 
@@ -2691,6 +2691,495 @@ Public Class Main_form
     End Sub
 
     ' ################################################# MEMBERS TAB END ################################################################################################################################
+
+
+    ' ################################################# STAFFS TAB ################################################################################################################################
+
+    Dim isSelectAll5 As Boolean = False
+    Dim isSidePanelOpen5 As Boolean = False
+
+    ' Tooltips
+    Private Sub Button62_MouseHover(sender As Object, e As EventArgs) Handles Button62.MouseHover
+        ToolTip1.SetToolTip(Button62, "Refresh")
+    End Sub
+
+    Private Sub Button63_MouseHover(sender As Object, e As EventArgs) Handles Button63.MouseHover
+        ToolTip1.SetToolTip(Button63, "Add Data")
+    End Sub
+
+    Private Sub Button64_MouseHover(sender As Object, e As EventArgs) Handles Button64.MouseHover
+        ToolTip1.SetToolTip(Button64, "Update Data")
+    End Sub
+
+    Private Sub Button65_MouseHover(sender As Object, e As EventArgs) Handles Button65.MouseHover
+        ToolTip1.SetToolTip(Button65, "Delete Data")
+    End Sub
+
+    Private Sub Button67_MouseHover(sender As Object, e As EventArgs) Handles Button67.MouseHover
+        ToolTip1.SetToolTip(Button67, "Bulk Delete")
+    End Sub
+
+    Private Sub Button66_MouseHover(sender As Object, e As EventArgs) Handles Button66.MouseHover
+        ToolTip1.SetToolTip(Button66, "Bulk Update")
+    End Sub
+
+    Private Sub Button68_MouseHover(sender As Object, e As EventArgs) Handles Button68.MouseHover
+        ToolTip1.SetToolTip(Button68, "Export")
+    End Sub
+
+
+    ' Navigation and Layout Controls
+    Private Sub Staffs_tab_Enter(sender As Object, e As EventArgs) Handles Staffs_tab.Enter
+        ResetForm5()
+    End Sub
+
+    Private Sub ResetForm5()
+        ResetFormMenu5()
+        ClearSearchInputs5()
+        ClearSideInputs5()
+        FlowLayoutPanel19.Visible = False
+        Label126.Text = "Create New Staff"
+        LoadDatagrid5("SELECT * FROM staffs")
+    End Sub
+
+    Private Sub ResetFormMenu5()
+        Button64.Enabled = False
+        Button65.Enabled = False
+        Button67.Enabled = False
+        Button66.Enabled = False
+        Button68.Enabled = False
+    End Sub
+
+    Private Sub ClearSideInputs5()
+        Button60.Enabled = True
+        isSidePanelOpen5 = False
+
+        Button59.Visible = False ' Bulk 59
+        Button58.Visible = False ' Update 58
+        Button57.Visible = True  ' Create57
+        FlowLayoutPanel19.Visible = False
+
+        TextBox47.Clear()
+        TextBox45.Clear()
+        TextBox46.Clear()
+        TextBox40.Clear()
+        TextBox43.Clear()
+        TextBox44.Clear()
+        TextBox42.Clear()
+    End Sub
+
+    Private Sub ClearSearchInputs5()
+        TextBox32.Clear()
+        TextBox33.Clear()
+        TextBox34.Clear()
+        TextBox35.Clear()
+        TextBox37.Clear()
+        TextBox39.Clear()
+        TextBox38.Clear()
+    End Sub
+
+    Private Sub Button61_Click(sender As Object, e As EventArgs) Handles Button61.Click
+        ClearSearchInputs5()
+        ClearSideInputs5()
+        FlowLayoutPanel19.Visible = False
+    End Sub
+
+    Private Sub Button63_Click(sender As Object, e As EventArgs) Handles Button63.Click
+        If Not isSidePanelOpen5 Then
+            SideCreateMode5()
+            isSidePanelOpen = True
+        End If
+    End Sub
+
+    Private Sub Button62_Click(sender As Object, e As EventArgs) Handles Button62.Click
+        ResetForm5()
+    End Sub
+
+    Sub SideUpdateMode5()
+        Label126.Text = "Update Staff Data"
+        FlowLayoutPanel19.Visible = True
+        Button60.Enabled = False
+        Button59.Visible = False
+        Button58.Visible = True
+        Button57.Visible = False
+
+        ' Set the selected data as default
+        TextBox47.Text = DataGridView5.SelectedRows(0).Cells(0).Value.ToString()
+        TextBox45.Text = DataGridView5.SelectedRows(0).Cells(1).Value.ToString()
+        TextBox46.Text = DataGridView5.SelectedRows(0).Cells(2).Value.ToString()
+        TextBox40.Text = DataGridView5.SelectedRows(0).Cells(3).Value.ToString()
+        TextBox43.Text = DataGridView5.SelectedRows(0).Cells(6).Value.ToString()
+        TextBox44.Text = DataGridView5.SelectedRows(0).Cells(7).Value.ToString()
+        TextBox42.Text = DataGridView5.SelectedRows(0).Cells(8).Value.ToString()
+    End Sub
+
+    Sub SideCreateMode5()
+        ResetForm5()
+        FlowLayoutPanel19.Visible = True
+    End Sub
+
+    Private Sub Button64_Click(sender As Object, e As EventArgs) Handles Button64.Click
+        SideUpdateMode5()
+    End Sub
+
+    Private Sub Button66_Click(sender As Object, e As EventArgs) Handles Button66.Click
+        FlowLayoutPanel19.Visible = True
+        Label126.Text = "Bulk Update Staff Data"
+        Button60.Enabled = False
+        Button59.Visible = True
+        Button58.Visible = False
+        Button57.Visible = False
+    End Sub
+
+    Private Sub DataGridView5_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView5.SelectionChanged
+        Dim num = DataGridView5.SelectedRows.Count
+        UpdateRowCounter5()
+
+        If num >= 2 Then
+            Button64.Enabled = False
+            Button65.Enabled = False
+            Button67.Enabled = True
+            Button66.Enabled = True
+            Button68.Enabled = True
+        ElseIf num = 1 Then
+            Button64.Enabled = True
+            Button65.Enabled = True
+            Button67.Enabled = False
+            Button66.Enabled = False
+            Button68.Enabled = True
+        End If
+    End Sub
+
+    Private Sub DataGridView5_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView5.CellDoubleClick
+        DataGridView5.ClearSelection()
+        Button64.Enabled = False
+        Button65.Enabled = False
+        Button67.Enabled = False
+        Button66.Enabled = False
+        Button68.Enabled = False
+    End Sub
+
+    Private Sub Button49_Click(sender As Object, e As EventArgs) Handles Button49.Click
+        If isSelectAll5 Then
+            ' if already selected all, unselect all
+            DataGridView5.ClearSelection()
+            UpdateRowCounter5()
+        Else
+            DataGridView5.SelectAll()
+            UpdateRowCounter5()
+        End If
+    End Sub
+
+    Private Sub UpdateRowCounter5()
+        Dim curRow As Integer = DataGridView5.RowCount
+        Dim selectedRow As Integer = DataGridView5.SelectedRows.Count
+        If curRow = selectedRow Then
+            Label101.Text = "Selected Row: " & selectedRow & "*"
+            Button49.Image = My.Resources.fluent__select_all_on_20_filled
+            isSelectAll5 = True
+        Else
+            Label101.Text = "Selected Row: " & selectedRow
+            Button49.Image = My.Resources.fluent__select_all_off_20_filled
+            ResetFormMenu5()
+            ClearSideInputs5()
+            isSelectAll5 = False
+        End If
+    End Sub
+
+    Private Sub TextBox32_TextChanged(sender As Object, e As EventArgs) Handles TextBox32.TextChanged
+        SearchQuery5()
+    End Sub
+
+    Private Sub TextBox33_TextChanged(sender As Object, e As EventArgs) Handles TextBox33.TextChanged
+        SearchQuery5()
+    End Sub
+
+    Private Sub TextBox34_TextChanged(sender As Object, e As EventArgs) Handles TextBox34.TextChanged
+        SearchQuery5()
+    End Sub
+
+    Private Sub TextBox35_TextChanged(sender As Object, e As EventArgs) Handles TextBox35.TextChanged
+        SearchQuery5()
+    End Sub
+
+    Private Sub TextBox37_TextChanged(sender As Object, e As EventArgs) Handles TextBox37.TextChanged
+        SearchQuery5()
+    End Sub
+
+    Private Sub TextBox39_TextChanged(sender As Object, e As EventArgs) Handles TextBox39.TextChanged
+        SearchQuery5()
+    End Sub
+
+    Private Sub TextBox38_TextChanged(sender As Object, e As EventArgs) Handles TextBox38.TextChanged
+        SearchQuery5()
+    End Sub
+
+    ' Error prevention
+    Private Sub Button60_Click(sender As Object, e As EventArgs) Handles Button60.Click
+        Dim num = Generate7Id("staffs", "Staff_ID")
+        TextBox47.Text = num
+    End Sub
+
+
+    ' CRUDS Methods
+    Private Sub Button57_Click(sender As Object, e As EventArgs) Handles Button57.Click
+        Dim id = TextBox47.Text.Trim
+        Dim fname = TextBox45.Text.Trim
+        Dim mname = TextBox46.Text.Trim
+        Dim lname = TextBox40.Text.Trim
+        Dim address = TextBox43.Text.Trim
+        Dim phonenum = TextBox44.Text.Trim
+        Dim position = TextBox42.Text.Trim
+
+        If id.Length = 0 Then
+            id = Generate7Id("staffs", "Staff_ID").ToString
+            TextBox47.Text = id
+        End If
+
+        If fname.Length > 0 And mname.Length > 0 And lname.Length > 0 And address.Length > 0 And phonenum.Length > 0 And position.Length > 0 Then
+            Dim data = {id, fname, mname, lname, address, phonenum, position}
+            InsertMembers(data)
+            ClearSearchInputs5()
+            ClearSideInputs5()
+            LoadDatagrid5("SELECT * FROM staffs")
+        Else
+            MessageBox.Show("Missing inputs: Action Failed ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+        End If
+    End Sub
+
+    Private Sub LoadDatagrid5(str As String)
+        Try
+            ReadQuery(str)
+            DataGridView5.Rows.Clear()
+            With cmdread
+                While .Read
+                    DataGridView5.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6))
+                End While
+            End With
+            DataGridView5.ClearSelection()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+        End Try
+    End Sub
+
+    Private Sub SearchQuery5()
+        Dim id As String = TextBox32.Text.Trim()
+        Dim fname As String = TextBox33.Text.Trim()
+        Dim mname As String = TextBox34.Text.Trim()
+        Dim lname As String = TextBox35.Text.Trim()
+        Dim address As String = TextBox37.Text.Trim()
+        Dim phonenum As String = TextBox39.Text.Trim()
+        Dim position As String = TextBox38.Text.Trim()
+
+        Dim whereClause As String = String.Empty
+        If id.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Staff_ID LIKE '%" & id & "%'"
+        End If
+        If fname.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Fname LIKE '%" & fname & "%'"
+        End If
+        If mname.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Mname LIKE '%" & mname & "%'"
+        End If
+        If lname.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Lname LIKE '%" & lname & "%'"
+        End If
+        If address.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Address LIKE '%" & address & "%'"
+        End If
+        If phonenum.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Phone_Num LIKE '%" & phonenum & "%'"
+        End If
+        If position.Length > 0 Then
+            If whereClause.Length > 0 Then
+                whereClause &= " AND "
+            End If
+            whereClause &= " Position LIKE '%" & position & "%'"
+        End If
+
+        Dim strQuery As String = "SELECT * FROM staffs"
+        If whereClause.Length > 0 Then
+            strQuery &= " WHERE " & whereClause
+        End If
+        Debug.WriteLine(strQuery)
+        LoadDatagrid5(strQuery)
+    End Sub
+
+    Private Sub Button58_Click(sender As Object, e As EventArgs) Handles Button58.Click
+        Dim id = TextBox47.Text.Trim
+        Dim fname = TextBox45.Text.Trim
+        Dim mname = TextBox46.Text.Trim
+        Dim lname = TextBox40.Text.Trim
+        Dim address = TextBox43.Text.Trim
+        Dim phonenum = TextBox44.Text.Trim
+        Dim position = TextBox42.Text.Trim
+
+        If fname.Length > 0 Or mname.Length > 0 Or mname.Length > 0 Or lname.Length > 0 Or address.Length > 0 Or phonenum.Length > 0 Or position.Length > 0 Then
+            Dim setClause = String.Empty
+            If fname.Length > 0 Then
+                If setClause.Length > 0 Then
+                    setClause &= ","
+                End If
+                setClause &= " Fname = '" & fname & "'"
+            End If
+            If mname.Length > 0 Then
+                If setClause.Length > 0 Then
+                    setClause &= ","
+                End If
+                setClause &= " Mname = '" & mname & "'"
+            End If
+            If lname.Length > 0 Then
+                If setClause.Length > 0 Then
+                    setClause &= ","
+                End If
+                setClause &= " Lname = '" & lname & "'"
+            End If
+            If address.Length > 0 Then
+                If setClause.Length > 0 Then
+                    setClause &= ","
+                End If
+                setClause &= " Address = '" & address & "'"
+            End If
+            If phonenum.Length > 0 Then
+                If setClause.Length > 0 Then
+                    setClause &= ","
+                End If
+                setClause &= " Phone_Num = '" & phonenum & "'"
+            End If
+            If position.Length > 0 Then
+                If setClause.Length > 0 Then
+                    setClause &= ","
+                End If
+                setClause &= " Position = '" & position & "'"
+            End If
+
+            Dim strQuery = "UPDATE staffs SET" & setClause & " WHERE Staff_ID= '" & id & "'"
+
+            Dim queryResult As Integer = ReadQuery(strQuery)
+            ClearSearchInputs5()
+            ClearSideInputs5()
+            LoadDatagrid5("SELECT * FROM staffs")
+            If queryResult = 1 Then
+                MessageBox.Show("Record " & LoanIdText.Text & "Updated :)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+            End If
+        Else
+            MessageBox.Show("Missing inputs: Update Failed ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+        End If
+    End Sub
+
+    Private Sub Button65_Click(sender As Object, e As EventArgs) Handles Button65.Click
+        Dim id = DataGridView5.SelectedRows(0).Cells(0).Value.ToString
+        Dim result = MessageBox.Show("Delete Record for ID:" & id & "?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+        If result = DialogResult.Yes Then
+            Dim str = "DELETE FROM staffs WHERE Staff_ID = '" & id & "'"
+            ReadQuery(str)
+            ResetForm5()
+            MessageBox.Show("Record " & id & " Deleted :)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+        End If
+    End Sub
+
+    Private Sub Button67_Click(sender As Object, e As EventArgs) Handles Button67.Click
+        Dim endCount = DataGridView5.SelectedRows.Count
+        Dim result = MessageBox.Show("Are you sure you want to delete in bulk " & endCount & " staff data?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+        If result = DialogResult.Yes Then
+            Dim a As Byte
+            ' For loop delete execution 
+            For a = 0 To endCount - 1D
+                Dim id = DataGridView5.SelectedRows(a).Cells(0).Value.ToString
+                Dim str = "DELETE FROM staffs WHERE Staff_ID = '" & id & "'"
+                ReadQuery(str)
+            Next
+            ResetForm5()
+            MessageBox.Show("Sucessfully deleted " & endCount & " staff data :)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+        End If
+    End Sub
+
+    Private Sub Button59_Click(sender As Object, e As EventArgs) Handles Button59.Click
+        Dim endCount = DataGridView5.SelectedRows.Count
+        Dim fname = TextBox45.Text.Trim
+        Dim mname = TextBox46.Text.Trim
+        Dim lname = TextBox40.Text.Trim
+        Dim address = TextBox43.Text.Trim
+        Dim phonenum = TextBox44.Text.Trim
+        Dim position = TextBox42.Text.Trim
+
+        If fname.Length > 0 Or mname.Length > 0 Or mname.Length > 0 Or lname.Length > 0 Or address.Length > 0 Or phonenum.Length > 0 Or position.Length > 0 Then
+            Dim result = MessageBox.Show("Are you sure you want to update in bulk " & endCount & " staff data?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+            If result = DialogResult.Yes Then
+                Dim a As Byte
+
+                ' For loop update execution 
+                For a = 0 To endCount - 1
+                    Dim id = DataGridView5.SelectedRows(a).Cells(0).Value.ToString
+                    Dim setClause = String.Empty
+                    If fname.Length > 0 Then
+                        If setClause.Length > 0 Then
+                            setClause &= ","
+                        End If
+                        setClause &= " Fname = '" & fname & "'"
+                    End If
+                    If mname.Length > 0 Then
+                        If setClause.Length > 0 Then
+                            setClause &= ","
+                        End If
+                        setClause &= " Mname = '" & mname & "'"
+                    End If
+                    If lname.Length > 0 Then
+                        If setClause.Length > 0 Then
+                            setClause &= ","
+                        End If
+                        setClause &= " Lname = '" & lname & "'"
+                    End If
+                    If address.Length > 0 Then
+                        If setClause.Length > 0 Then
+                            setClause &= ","
+                        End If
+                        setClause &= " Address = '" & address & "'"
+                    End If
+                    If phonenum.Length > 0 Then
+                        If setClause.Length > 0 Then
+                            setClause &= ","
+                        End If
+                        setClause &= " Phone_Num = '" & phonenum & "'"
+                    End If
+                    If position.Length > 0 Then
+                        If setClause.Length > 0 Then
+                            setClause &= ","
+                        End If
+                        setClause &= " Position = '" & position & "'"
+                    End If
+
+                    Dim strQuery = "UPDATE staffs SET" & setClause & " WHERE Staff_ID= '" & id & "'"
+                    Debug.WriteLine(strQuery)
+                    ReadQuery(strQuery)
+                Next
+                ResetForm5()
+                MessageBox.Show("Sucessfully updated " & endCount & " staff data :)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+            End If
+        Else
+            MessageBox.Show("Missing inputs: Update Failed ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+        End If
+    End Sub
+
+    ' ################################################# STAFFS TAB END ################################################################################################################################
 
 
 End Class
